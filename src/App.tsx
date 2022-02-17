@@ -1,12 +1,12 @@
 
+import { Content, GlobalStyle } from "./app.style";
 
-function App() {
+
+export default function App() {
 
   return (
-    <div className="App">
-      
-    </div>
+    <Content>
+      <GlobalStyle />
+    </Content>
   );
 };
-
-export default App;
