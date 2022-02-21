@@ -1,7 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { darkTheme, lightTheme } from "../styles";
 
-type Theme = {
+export type Theme = {
     backgroundColor: string,
     textColor: string;
 }
@@ -28,14 +28,16 @@ export function ThemeProvider({children}: ThemeProviderProps) {
     
     function toggleTheme() {
         setDarkThemeActived(!darkThemeActived);
+    };
 
+    useEffect(()=>{
         if(darkThemeActived) {
             setTheme(darkTheme);
         }
         else {
             setTheme(lightTheme);
         };
-    };
+    }, [darkThemeActived]);
     
     return (
         <ThemeContext.Provider value={{
