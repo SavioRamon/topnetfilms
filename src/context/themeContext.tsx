@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useLayoutEffect, useState } from "react";
 import { darkTheme, lightTheme } from "../styles";
 
 export type Theme = {
@@ -27,17 +27,30 @@ export function ThemeProvider({children}: ThemeProviderProps) {
 
     
     function toggleTheme() {
+        // Toggle the value of darkThemeActived and set it value in localStorage
+        
         setDarkThemeActived(!darkThemeActived);
+        localStorage.setItem("darkThemeActived", JSON.stringify(!darkThemeActived));
     };
 
-    useEffect(()=>{
-        if(darkThemeActived) {
-            setTheme(darkTheme);
-        }
-        else {
-            setTheme(lightTheme);
-        };
+    useLayoutEffect(()=>{
+        // Load the respective theme after changing darkThemeActived
+
+        if(darkThemeActived) setTheme(darkTheme);
+        else setTheme(lightTheme);
     }, [darkThemeActived]);
+
+
+    useLayoutEffect(()=>{
+        // checks for a predefined theme in localStorage
+
+        const isDarkThemeActived = localStorage.getItem("darkThemeActived");
+        if(typeof isDarkThemeActived === "string") {
+            const parseTheme: boolean = JSON.parse(isDarkThemeActived);
+            setDarkThemeActived(parseTheme);
+        };
+    }, []);
+    
     
     return (
         <ThemeContext.Provider value={{
