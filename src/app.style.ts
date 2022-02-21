@@ -1,4 +1,5 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
+import { Theme } from "./context/themeContext";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -12,7 +13,15 @@ export const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export const Content = styled.div`
+type ContentProps = {
+    theme: Theme;
+};
 
+export const Content = styled.div`
+    ${(props: ContentProps) => css`
+            background-color: ${props.theme.backgroundColor};
+            color: ${props.theme.textColor};
+        `
+    };
 `;
 
