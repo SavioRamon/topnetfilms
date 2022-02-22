@@ -1,5 +1,5 @@
 import { Content, GlobalStyle } from "./app.style";
-import Header from "./components/Header";
+import Header from "./components/common/Header";
 
 import { useTheme } from "./hooks/useTheme";
 
