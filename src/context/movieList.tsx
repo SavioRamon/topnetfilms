@@ -1,13 +1,14 @@
 import { createContext, useState } from "react";
+import { tmdbGetHomeListData } from "../services/tmdb";
 
 type MovieData = {
     
 };
 
 type MovieListTypes = {
-    movieData: MovieData;
+    homeList: MovieData;
     load: boolean;
-    getMovieDataFromAPI: () => void;
+    getHomeListDataFromApi: () => void;
 };
 
 type PropsTypes = {
@@ -20,19 +21,23 @@ export const movieListContext = createContext({} as MovieListTypes);
 
 export function MovieListProvider({children}: PropsTypes) {
 
-    const [movieData, setMovieData] = useState<MovieData>({});
+    const [homeList, setHomeList] = useState<MovieData>({});
     const [load, setLoad] = useState(false);
 
-    function getMovieDataFromAPI() {
-        setLoad(true);
+    async function getHomeListDataFromApi() {
+        const movieData = await tmdbGetHomeListData();
+        
+        if(movieData) {
+            setHomeList(movieData);
+        };
 
     };
     
     return (
         <movieListContext.Provider value={{
-            movieData,
+            homeList,
             load,
-            getMovieDataFromAPI
+            getHomeListDataFromApi
         }}>
             {children}
         </movieListContext.Provider>
