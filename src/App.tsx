@@ -1,7 +1,10 @@
+
 import { Content, GlobalStyle } from "./app.style";
 import Header from "./components/common/Header";
 
-import { useTheme } from "./hooks/useTheme";
+import { useTheme } from "./hooks";
+
+import RouterComponent from "./routes";
 
 export default function App(){
 
@@ -9,9 +12,11 @@ export default function App(){
 
   return (
     <Content theme={theme}>
-      <GlobalStyle />
 
+      <GlobalStyle />
       <Header />
+
+      <RouterComponent />
       
     </Content>
   );
