@@ -1,12 +1,20 @@
 import { createContext, useState } from "react";
 import { tmdbGetHomeListData } from "../services/tmdb";
 
-type MovieData = {
-    
+type HomeList = {
+    title: string;
+    data: {
+        results: [
+            {
+                title: string;
+                release_date: string;
+            }
+        ]
+    }
 };
 
 type MovieListTypes = {
-    homeList: MovieData;
+    homeList: HomeList[];
     load: boolean;
     getHomeListDataFromApi: () => void;
 };
@@ -21,7 +29,7 @@ export const movieListContext = createContext({} as MovieListTypes);
 
 export function MovieListProvider({children}: PropsTypes) {
 
-    const [homeList, setHomeList] = useState<MovieData>({});
+    const [homeList, setHomeList] = useState<HomeList[]>([]);
     const [load, setLoad] = useState(false);
 
     async function getHomeListDataFromApi() {
