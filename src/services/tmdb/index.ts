@@ -16,7 +16,7 @@ export const tmdbGetHomeListData = async () => {
         },
         {
             title: "Tendências",
-            data: await basicFetch("trending/all/day?")
+            data: await basicFetch("trending/movie/day?")
         }
     ];
 };
