@@ -1,8 +1,14 @@
 
+import InitialMovieList from "./components/InitialMovieList.tsx/InitialMovieList";
+
+import { HomeContainer } from "./style";
+
 
 export default function Home() {
 
     return (
-        <div>home</div>
+        <HomeContainer>
+            <InitialMovieList />
+        </HomeContainer>
     );
 };
