@@ -6,6 +6,8 @@ import {
 } from "./style";
 import Film from "../Film";
 
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
 
 type ListResults = {
     title: string;
@@ -24,7 +26,7 @@ export default function ScrollList({ listResults }: Props) {
         rightButton: true
     });
 
-    const scrollSpacingValue = (window.innerWidth / 3);
+    const scrollSpacingValue = (window.innerWidth / 2);
 
     const scrollListRef = useRef<HTMLDivElement>(null);
 
@@ -66,7 +68,7 @@ export default function ScrollList({ listResults }: Props) {
                 <ButtonScroll left onClick={()=>{
                     scrollingList(-scrollSpacingValue);
                 }}>
-
+                    <IoIosArrowBack />
                 </ButtonScroll>
             }
 
@@ -82,7 +84,7 @@ export default function ScrollList({ listResults }: Props) {
                 <ButtonScroll right onClick={()=>{
                     scrollingList(scrollSpacingValue);
                 }}>
-                    
+                    <IoIosArrowForward />
                 </ButtonScroll>
             }
         </ScrollContent>

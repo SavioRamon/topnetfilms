@@ -3,6 +3,8 @@ import styled, { css } from "styled-components";
 
 export const ScrollContent = styled.div`
     position: relative;
+    display: flex;
+    align-items: center;
 `;
 
 export const ScrollListContainer = styled.div`
@@ -21,15 +23,18 @@ type ButtonScrollProps = {
 export const ButtonScroll = styled.button`
     z-index: 1;
     position: absolute;
-    top: calc(50% - 25px);
-    width: 50px;
-    height: 50px;
+    padding: 1vw;
     border-radius: 50%;
-    background-color: #999;
     cursor: pointer;
     border: none;
+    font-size: calc(2rem + 2vw);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    transition: height ease 30ms;
     ${(props: ButtonScrollProps)=>{
-        if(props.left) return css` left: 0; `;
-        if(props.right) return css` right: 0; `;
+        if(props.left) return css`left: 2vw`;
+        if(props.right) return css`right: 2vw;`;
     }}
 `;
