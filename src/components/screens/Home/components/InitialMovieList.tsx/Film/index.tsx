@@ -11,7 +11,7 @@ type FilmProps = {
 export default function Film({ filmInfo }: FilmProps) {
     return (
         <FilmContainer>
-            <FilmImage src={`https://image.tmdb.org/t/p/w200${filmInfo.poster_path}`} alt="" />
+            <FilmImage src={`https://image.tmdb.org/t/p/w200${filmInfo.poster_path}`} alt={filmInfo.title} />
         </FilmContainer>
     );
 };
