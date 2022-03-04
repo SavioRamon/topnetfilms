@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { FilmBottom, FilmContainer, FilmImage } from "./style";
+import { FilmContainer, FilmImage } from "./style";
 
 type FilmProps = {
     filmInfo: {
