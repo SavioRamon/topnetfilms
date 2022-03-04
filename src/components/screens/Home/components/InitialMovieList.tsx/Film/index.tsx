@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FilmBottom, FilmContainer, FilmImage } from "./style";
 
 type FilmProps = {
     filmInfo: {
@@ -7,25 +8,6 @@ type FilmProps = {
         poster_path: string;
     };
 }
-
-const FilmContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
-const FilmImage = styled.img`
-    width: calc(5rem + 7vw);
-    height: calc(5rem + 12vw);
-    display: block;
-`;
-
-const FilmBottom = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;
 
 export default function Film({ filmInfo }: FilmProps) {
     return (
