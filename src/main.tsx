@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 import { ThemeProvider } from './context/themeContext';
 import { MovieListProvider } from "./context/movieList";
-import App from './App';
+import { AuthProvider } from './context/authentication';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-      <MovieListProvider>
-        <App />
-      </MovieListProvider>
+      <AuthProvider>
+        <MovieListProvider>
+          <App />
+        </MovieListProvider>
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
