@@ -5,7 +5,7 @@ import metrics from "../../../../styles/metrics";
 import CONSTANTS from "../../../../utils/CONSTANTS";
 
 
-const TopContentDiv = styled.div`
+const BottomContentDiv = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -35,13 +35,14 @@ const ListItemImage = styled.img`
     width: calc(1.5rem + 1.5vw);
 `;
 
-export default function TopContent() {
+export default function BottomContent() {
 
     const { authWithService } = useAuthentication();
 
     return (
-        <TopContentDiv>
-            <TextInfo>Continue with</TextInfo>
+        <BottomContentDiv>
+
+            <TextInfo>Or continue with</TextInfo>
 
             <ListOfAcessServices>
                 <ListItem onClick={() => authWithService(CONSTANTS.PARAMS.GOOGLE)}>
@@ -49,8 +50,6 @@ export default function TopContent() {
                 </ListItem>
                 
             </ListOfAcessServices>
-
-            <TextInfo>Or</TextInfo>
-        </TopContentDiv>
+        </BottomContentDiv>
     );
 };
