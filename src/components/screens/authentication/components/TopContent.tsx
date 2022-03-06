@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import googleIcon from "../../../../../assets/googleIcon.svg";
+import { useAuthentication } from "../../../../hooks";
 import metrics from "../../../../styles/metrics";
+import CONSTANTS from "../../../../utils/CONSTANTS";
 
 
 const TopContentDiv = styled.div`
@@ -34,14 +36,18 @@ const ListItemImage = styled.img`
 `;
 
 export default function TopContent() {
+
+    const { authWithService } = useAuthentication();
+
     return (
         <TopContentDiv>
             <TextInfo>Continue with</TextInfo>
 
             <ListOfAcessServices>
-                <ListItem>
+                <ListItem onClick={() => authWithService(CONSTANTS.PARAMS.GOOGLE)}>
                     <ListItemImage src={googleIcon} alt="google icon" />
                 </ListItem>
+                
             </ListOfAcessServices>
 
             <TextInfo>Or</TextInfo>
