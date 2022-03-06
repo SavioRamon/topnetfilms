@@ -18,6 +18,9 @@ type ContentProps = {
 };
 
 export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     ${(props: ContentProps) => css`
             background-color: ${props.theme.backgroundColor};
             color: ${props.theme.textColor};
