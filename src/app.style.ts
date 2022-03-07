@@ -11,6 +11,13 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-size: 62.5%;
     }
+    
+    body, input {
+        ${(props: ContentProps) => css`
+            background-color: ${props.theme.backgroundColor};
+            color: ${props.theme.textColor};
+        `}
+    };
 `;
 
 type ContentProps = {
@@ -18,13 +25,6 @@ type ContentProps = {
 };
 
 export const Content = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    ${(props: ContentProps) => css`
-            background-color: ${props.theme.backgroundColor};
-            color: ${props.theme.textColor};
-        `
-    };
+    width: 100%;
 `;
 

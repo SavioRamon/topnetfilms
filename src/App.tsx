@@ -11,9 +11,9 @@ export default function App(){
   const { theme } = useTheme();
 
   return (
-    <Content theme={theme}>
+    <Content>
 
-      <GlobalStyle />
+      <GlobalStyle theme={theme} />
       <Header />
 
       <RouterComponent />
