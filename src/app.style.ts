@@ -11,6 +11,10 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-size: 62.5%;
     }
+
+    a {
+        text-decoration: none;
+    }
     
     body, input {
         ${(props: ContentProps) => css`
