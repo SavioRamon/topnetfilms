@@ -1,5 +1,5 @@
 import { useAuthentication } from "../../../../hooks";
-import { ScreenAuth, ContentWrapper, FormAuthentication, TitleAuth } from "../style";
+import { ScreenAuth, ContentWrapper, FormAuthentication, TitleAuth, TextForm, ToggleScreenAuth, ButtonForm } from "../style";
 
 import Input from "./Input";
 import BottomContent from "./BottomContent";
@@ -32,6 +32,13 @@ export default function Login() {
                         icon={<RiLockPasswordFill />}
                         setValue={setPassword}
                     />
+
+                    <TextForm>
+                        Not account?
+                        <ToggleScreenAuth> Register now!</ToggleScreenAuth>
+                    </TextForm>
+
+                    <ButtonForm>LOGIN</ButtonForm>
 
                     <BottomContent />
                 </FormAuthentication>

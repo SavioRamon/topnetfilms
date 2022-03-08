@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../../styles/colors";
 import metrics from "../../../styles/metrics";
 
 
@@ -30,4 +31,27 @@ export const TitleAuth = styled.h1`
 
 export const FormAuthentication = styled.form`
     width: 100%;
+`;
+
+export const ButtonForm = styled.button`
+    margin: ${metrics.extraSmallSpacingSize} 0;
+    padding: ${metrics.extraSmallSpacingSize};
+    width: 100%;
+    border: none;
+    border-radius: ${metrics.extraSmallSpacingSize};
+    background-color: ${colors.blue};
+    color: #fff;
+    cursor: pointer;
+    font-size: calc(.7rem + .7vw);
+    font-weight: bold;
+`;
+
+export const TextForm = styled.div`
+    font-size: calc(.7rem + .7vw);
+`;
+
+export const ToggleScreenAuth = styled.span`
+    color: ${colors.blue};
+    font-weight: bold;
+    cursor: pointer;
 `;

@@ -1,5 +1,5 @@
 import { useAuthentication } from "../../../../hooks";
-import { ScreenAuth, ContentWrapper, FormAuthentication, TitleAuth } from "../style";
+import { ScreenAuth, ContentWrapper, FormAuthentication, TitleAuth, TextForm, ToggleScreenAuth, ButtonForm } from "../style";
 
 import Input from "./Input";
 import BottomContent from "./BottomContent";
@@ -16,7 +16,9 @@ export default function Register() {
             <ContentWrapper>
                 <TitleAuth>Create Account</TitleAuth>
 
-                <FormAuthentication>
+                <FormAuthentication onSubmit={(e)=>{
+                    e.preventDefault()
+                }}>
                     <Input 
                         id="name"
                         type="text"
@@ -39,6 +41,13 @@ export default function Register() {
                         icon={<RiLockPasswordFill />}
                         setValue={setPassword}
                     />
+
+                    <TextForm>
+                        Has account?
+                        <ToggleScreenAuth> Login!</ToggleScreenAuth>
+                    </TextForm>
+
+                    <ButtonForm>REGISTER</ButtonForm>
 
                     <BottomContent />
                 </FormAuthentication>
