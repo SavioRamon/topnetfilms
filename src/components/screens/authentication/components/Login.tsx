@@ -5,6 +5,7 @@ import Input from "./Input";
 import BottomContent from "./BottomContent";
 
 import { RiMailFill, RiLockPasswordFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 
 export default function Login() {
@@ -35,7 +36,9 @@ export default function Login() {
 
                     <TextForm>
                         Not account?
-                        <ToggleScreenAuth> Register now!</ToggleScreenAuth>
+                        <Link to="/register">
+                            <ToggleScreenAuth> Register now!</ToggleScreenAuth>
+                        </Link>
                     </TextForm>
 
                     <ButtonForm>LOGIN</ButtonForm>
