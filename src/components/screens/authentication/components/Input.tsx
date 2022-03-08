@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../../../styles/colors";
 import metrics from "../../../../styles/metrics";
 
 const InputContent = styled.fieldset`
@@ -14,6 +15,11 @@ const LabelArea = styled.label`
     display: flex;
     align-items: center;
     border-bottom: .1vw solid #999;
+
+    &:focus-within {
+        color: ${colors.blue};
+        border-color: ${colors.blue};
+    }
 `;
 
 const InputIcon = styled.div`
