@@ -17,7 +17,9 @@ export default function Login() {
             <ContentWrapper>
                 <TitleAuth>Login</TitleAuth>
 
-                <FormAuthentication>
+                <FormAuthentication onSubmit={(e)=>{
+                    e.preventDefault()
+                }}>
                     <Input 
                         id="email"
                         type="email" 
