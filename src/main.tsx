@@ -1,20 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { ThemeProvider } from './context/themeContext';
-import { MovieListProvider } from "./context/movieList";
-import { AuthProvider } from './context/authentication';
+import RootContext from './context';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <MovieListProvider>
-          <App />
-        </MovieListProvider>
-      </AuthProvider>
-    </ThemeProvider>
+    <RootContext>
+      <App />
+    </RootContext>
   </React.StrictMode>,
   document.getElementById('root')
 );
