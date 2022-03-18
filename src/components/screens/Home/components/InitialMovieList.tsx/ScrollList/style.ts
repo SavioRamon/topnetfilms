@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import metrics from "../../../../../../styles/metrics";
 
 
 export const ScrollContent = styled.div`
@@ -23,7 +24,7 @@ type ButtonScrollProps = {
 export const ButtonScroll = styled.button`
     z-index: 1;
     position: absolute;
-    padding: 1vw;
+    padding: ${metrics.extraSmallSpacingSize};
     border-radius: 50%;
     cursor: pointer;
     border: none;
