@@ -5,19 +5,8 @@ import { MovieListContext } from "../context/movieList";
 import { ThemeContext } from "../context/themeContext";
 
 
-export function useMovieList() {
-    const context = useContext(MovieListContext);
-    return context;
-};
+export const useMovieList = () => useContext(MovieListContext);
 
+export const useTheme = () => useContext(ThemeContext);
 
-export function useTheme() {
-    const context = useContext(ThemeContext);
-    return context;
-};
-
-
-export function useAuthentication() {
-    const context = useContext(AuthContext);
-    return context;
-};
+export const useAuthentication = () => useContext(AuthContext);
