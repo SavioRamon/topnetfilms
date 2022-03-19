@@ -1,12 +1,12 @@
 import { useContext } from "react";
 
 import { AuthContext } from "../context/authentication";
-import { movieListContext } from "../context/movieList";
+import { MovieListContext } from "../context/movieList";
 import { ThemeContext } from "../context/themeContext";
 
 
 export function useMovieList() {
-    const context = useContext(movieListContext);
+    const context = useContext(MovieListContext);
     return context;
 };
 
