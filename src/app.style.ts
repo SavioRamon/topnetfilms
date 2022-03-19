@@ -17,16 +17,13 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     body, input {
-        ${(props: ContentProps) => css`
-            background-color: ${props.theme.backgroundColor};
-            color: ${props.theme.textColor};
-        `}
+        background-color: ${({theme})=>theme.backgroundColor};
+        color: ${({theme})=>theme.textColor};
+        
     };
 `;
 
-type ContentProps = {
-    theme: Theme;
-};
+
 
 export const Content = styled.div`
     width: 100%;
