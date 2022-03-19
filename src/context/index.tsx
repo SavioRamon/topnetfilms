@@ -1,6 +1,6 @@
 import { AuthProvider } from "./authentication";
 import { MovieListProvider } from "./movieList";
-import { ThemeProvider } from "./themeContext";
+import { ThemeContextProvider } from "./themeContext";
 
 
 type RootContextProps = {
@@ -9,13 +9,13 @@ type RootContextProps = {
 
 const RootContext = ({ children }: RootContextProps) => {
     return (
-        <ThemeProvider>
+        <ThemeContextProvider>
             <AuthProvider>
                 <MovieListProvider>
                     { children }
                 </MovieListProvider>
             </AuthProvider>
-        </ThemeProvider>
+        </ThemeContextProvider>
     )
 };
 

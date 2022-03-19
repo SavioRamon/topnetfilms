@@ -25,7 +25,7 @@ type PropsTypes = {
 };
 
 
-export const movieListContext = createContext({} as MovieListTypes);
+export const MovieListContext = createContext({} as MovieListTypes);
 
 
 export function MovieListProvider({children}: PropsTypes) {
@@ -43,12 +43,12 @@ export function MovieListProvider({children}: PropsTypes) {
     };
     
     return (
-        <movieListContext.Provider value={{
+        <MovieListContext.Provider value={{
             homeList,
             load,
             getHomeListDataFromApi
         }}>
             {children}
-        </movieListContext.Provider>
+        </MovieListContext.Provider>
     );
 };
