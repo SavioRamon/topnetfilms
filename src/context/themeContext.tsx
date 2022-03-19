@@ -1,4 +1,5 @@
 import { createContext, useLayoutEffect, useState } from "react";
+import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../styles";
 
 export type Theme = {
@@ -7,23 +8,18 @@ export type Theme = {
 }
 
 type ThemeContextType = {
-    theme: Theme
-    darkThemeActived: boolean,
+    darkThemeActived: boolean;
     toggleTheme: () => void;
-}
-
-type ThemeProviderProps = {
-    children: JSX.Element
-}
+};
 
 
 export const ThemeContext = createContext({} as ThemeContextType);
     
 
-export function ThemeProvider({children}: ThemeProviderProps) {
+export const ThemeContextProvider = ({children}: {children: JSX.Element}) => {
     
     const [theme, setTheme] = useState<Theme>(darkTheme);
-    const [darkThemeActived, setDarkThemeActived] = useState(true);
+    const [darkThemeActived, setDarkThemeActived] = useState<boolean>(true);
 
     
     function toggleTheme() {
@@ -54,11 +50,12 @@ export function ThemeProvider({children}: ThemeProviderProps) {
     
     return (
         <ThemeContext.Provider value={{
-            theme,
             darkThemeActived,
             toggleTheme
         }}>
-            {children}
+            <ThemeProvider theme={theme}>
+                {children}
+            </ThemeProvider>
         </ThemeContext.Provider>
     );
 };
