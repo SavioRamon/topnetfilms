@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import App from "../App";
 
 import Login from "../components/screens/authentication/components/Login";
 import Register from "../components/screens/authentication/components/Register";
@@ -9,9 +10,12 @@ export default function RouterComponent(){
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                
+                <Route path="/" element={<App />}>
+                    <Route index element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     );
