@@ -39,13 +39,19 @@ export default function BottomContent() {
 
     const { authWithService } = useAuthentication();
 
+
+    const handleService = (service: string) => {
+        authWithService(service);
+    };
+
+
     return (
         <BottomContentDiv>
 
             <TextInfo>Or continue with</TextInfo>
 
             <ListOfAcessServices>
-                <ListItem onClick={() => authWithService(CONSTANTS.PARAMS.GOOGLE)}>
+                <ListItem onClick={() => handleService(CONSTANTS.PARAMS.GOOGLE)}>
                     <ListItemImage src={googleIcon} alt="google icon" />
                 </ListItem>
                 
