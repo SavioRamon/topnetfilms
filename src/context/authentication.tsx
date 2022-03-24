@@ -6,6 +6,7 @@ type UserDataType = Partial<User> | null;
 
 type Authentication = {
     userData: UserDataType;
+    authPersistence: ()=>void;
     authWithService: (value: string) => void;
     setName: React.Dispatch<React.SetStateAction<string>>;
     setEmail: React.Dispatch<React.SetStateAction<string>>;
@@ -42,11 +43,16 @@ export function AuthProvider({children}: {children: JSX.Element}) {
         const service = authenticationServices[value as keyof typeof authenticationServices];
         service();
     };
+
+    function authPersistence() {
+        authenticationAPI.autoLogin(setUserData);
+    };
     
 
     return (
         <AuthContext.Provider value={{
             userData,
+            authPersistence,
             authWithService,
             setName,
             setEmail,

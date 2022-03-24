@@ -3,7 +3,8 @@ import { initializeApp } from "firebase/app";
 import {
     getAuth,
     GoogleAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    onAuthStateChanged
 } from "firebase/auth";
 
 import firebaseConfig from "./firebaseConfig";
@@ -24,5 +25,11 @@ export const authenticationAPI = {
         };
     },
 
-
+    async autoLogin(setUser: (user: {})=>void) {
+        onAuthStateChanged(auth, (user) => {
+            if(user) {
+                setUser(user);
+            }
+        });
+    },
 };
