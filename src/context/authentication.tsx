@@ -51,7 +51,7 @@ export function AuthProvider({children}: {children: JSX.Element}) {
 
     async function disconnect() {
         authenticationAPI.disconnectUser()
-          .then(()=>{setUserData(null)});
+          .then(()=>setUserData(null));
     };
     
 
