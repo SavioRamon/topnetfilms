@@ -4,7 +4,8 @@ import {
     getAuth,
     GoogleAuthProvider,
     signInWithPopup,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
 } from "firebase/auth";
 
 import firebaseConfig from "./firebaseConfig";
@@ -32,4 +33,13 @@ export const authenticationAPI = {
             }
         });
     },
+
+    async disconnectUser() {
+        try {
+            const result = await signOut(auth);
+            return result;
+        } catch (error: any) {
+            alert(error.message);
+        };
+    }
 };

@@ -6,11 +6,12 @@ type UserDataType = Partial<User> | null;
 
 type Authentication = {
     userData: UserDataType;
-    authPersistence: ()=>void;
+    authPersistence: () => void;
     authWithService: (value: string) => void;
     setName: React.Dispatch<React.SetStateAction<string>>;
     setEmail: React.Dispatch<React.SetStateAction<string>>;
     setPassword: React.Dispatch<React.SetStateAction<string>>;
+    disconnect: () => void;
 };
 
 
@@ -47,6 +48,11 @@ export function AuthProvider({children}: {children: JSX.Element}) {
     function authPersistence() {
         authenticationAPI.autoLogin(setUserData);
     };
+
+    async function disconnect() {
+        authenticationAPI.disconnectUser()
+          .then(()=>{setUserData(null)});
+    };
     
 
     return (
@@ -57,6 +63,7 @@ export function AuthProvider({children}: {children: JSX.Element}) {
             setName,
             setEmail,
             setPassword,
+            disconnect
         }}>
             {children}
         </AuthContext.Provider>
