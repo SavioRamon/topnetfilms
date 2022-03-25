@@ -1,4 +1,4 @@
-import ConfigBox from "./components/ConfigBox";
+import ConfigBox from "./components/ConfigMenu";
 import ToggleTheme from "./components/ToggleTheme";
 import { HeaderContainer } from "./style";
 
