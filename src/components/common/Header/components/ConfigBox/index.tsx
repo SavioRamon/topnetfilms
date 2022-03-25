@@ -7,12 +7,14 @@ import images from "../../../../../assets/images";
 
 const ConfigBox = (): JSX.Element => {
 
-    const { userData, disconnect } = useAuthentication();
+    const { userData, load, disconnect } = useAuthentication();
 
     const [openConfig, setOpenConfig] = useState(false);
 
     const handleOpenConfig = () => {
-        setOpenConfig(!openConfig);
+        if(!load) {
+            setOpenConfig(!openConfig);
+        };
     };
 
     const disconnecting = () => {
@@ -20,20 +22,20 @@ const ConfigBox = (): JSX.Element => {
         disconnect();
     };
 
-
     const returnImage = () => {
-        return userData?.photoURL? userData.photoURL : images.userDefault;
-    }
-    
+        if(!load) return userData?.photoURL? userData.photoURL : images.userDefault;
+    };
+
     return (
         <Container>
             
             <UserImage
                 src={returnImage()}
                 alt="your user image"
-                onClick={handleOpenConfig}/>
+                onClick={handleOpenConfig} 
+            />
 
-            {openConfig &&
+            {openConfig && 
                 <ConfigContent>
                     <BottomConfig>
                         {userData?

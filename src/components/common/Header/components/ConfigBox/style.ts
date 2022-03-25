@@ -13,7 +13,9 @@ export const Container = styled.div`
 export const UserImage = styled.img`
     width: clamp(3rem, 3rem + 1vw, 3rem + 1vw);
     height: clamp(3rem, 3rem + 1vw, 3rem + 1vw);
-    background-color: inherit;
+    background-color: transparent;
+    color: transparent;
+    overflow: hidden;
     border-radius: 50%;
     cursor: pointer;
     border: .1vw solid #999;
