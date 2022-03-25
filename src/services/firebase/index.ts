@@ -19,18 +19,17 @@ export const authenticationAPI = {
     async googleAuth() {
         const provider = new GoogleAuthProvider();
         try {
-            const result = await signInWithPopup(auth, provider);
-            return result.user;
+            await signInWithPopup(auth, provider);
         } catch (error: any) {
             alert(error.message);
         };
     },
 
-    async autoLogin(setUser: (user: {})=>void) {
+    autoLogin(callback: (user: {} | null)=>void) {
         onAuthStateChanged(auth, (user) => {
-            if(user) {
-                setUser(user);
-            }
+
+            if(user) callback(user);
+            else callback(null);
         });
     },
 

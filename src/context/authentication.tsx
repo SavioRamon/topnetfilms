@@ -6,6 +6,7 @@ type UserDataType = Partial<User> | null;
 
 type Authentication = {
     userData: UserDataType;
+    load: boolean;
     authPersistence: () => void;
     authWithService: (value: string) => void;
     setName: React.Dispatch<React.SetStateAction<string>>;
@@ -21,6 +22,7 @@ export  const AuthContext = createContext({} as Authentication);
 export function AuthProvider({children}: {children: JSX.Element}) {
 
     const [userData, setUserData] = useState<UserDataType>(null);
+    const [load, setLoad] = useState(true);
 
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
@@ -30,14 +32,7 @@ export function AuthProvider({children}: {children: JSX.Element}) {
 
         const authenticationServices = {
             GOOGLE: async () => {
-                const result = await authenticationAPI.googleAuth();
-                if (result) {
-                    // Set the data of user on hook userData
-                    const { displayName, email, photoURL, uid } = result;
-                    setUserData({ displayName, email, photoURL, uid });
-                } else {
-                    console.log("não tem usuário kkkk");
-                };
+                await authenticationAPI.googleAuth();
             },
         };
 
@@ -46,18 +41,34 @@ export function AuthProvider({children}: {children: JSX.Element}) {
     };
 
     function authPersistence() {
-        authenticationAPI.autoLogin(setUserData);
+        /* 
+        After login, registration or disconnection, a Firebase listener will be activated and set the data
+        in the context
+        */
+        function setValues(value: UserDataType) {
+            if(value) {
+                const { displayName, email, photoURL, uid } = value;
+                setUserData({ displayName, email, photoURL, uid });
+            };
+            
+            setLoad(false);
+        };
+
+        authenticationAPI.autoLogin(setValues);
     };
 
     async function disconnect() {
         authenticationAPI.disconnectUser()
           .then(()=>setUserData(null));
     };
+
+
     
 
     return (
         <AuthContext.Provider value={{
             userData,
+            load,
             authPersistence,
             authWithService,
             setName,
