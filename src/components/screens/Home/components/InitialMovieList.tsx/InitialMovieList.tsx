@@ -13,6 +13,7 @@ const ListTitle = styled.h2`
     font-size: calc(1rem + 0.7vw);
     margin-top: ${metrics.largeSpacingSize};
     margin-left: ${metrics.extraSmallSpacingSize};
+    margin-bottom: ${metrics.extraSmallSpacingSize};
 `;
 
 

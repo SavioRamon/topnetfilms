@@ -2,7 +2,7 @@ import styled from "styled-components";
 import metrics from "../../../../../../styles/metrics";
 
 export const FilmContainer = styled.div`
-    margin: ${metrics.extraSmallSpacingSize};
+    margin: 0 ${metrics.extraSmallSpacingSize};
     display: flex;
     flex-direction: column;
 `;
