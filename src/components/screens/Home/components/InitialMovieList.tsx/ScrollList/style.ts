@@ -6,14 +6,19 @@ export const ScrollContent = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    overflow-y: hidden;
 `;
 
 export const ScrollListContainer = styled.div`
     display: flex;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
     scroll-behavior: smooth;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 type ButtonScrollProps = {
@@ -23,19 +28,31 @@ type ButtonScrollProps = {
 
 export const ButtonScroll = styled.button`
     z-index: 1;
+    height: 100%;
     position: absolute;
-    padding: ${metrics.extraSmallSpacingSize};
-    border-radius: 50%;
     cursor: pointer;
     border: none;
     font-size: calc(2rem + 2vw);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    color: ${({theme})=>theme.textColor};
+    background-color: ${({theme})=>theme.backgroundSecondary};
+    opacity: .8;
     display: flex;
     align-items: center;
-    transition: height ease 30ms;
-    ${(props: ButtonScrollProps)=>{
-        if(props.left) return css`left: 2vw`;
-        if(props.right) return css`right: 2vw;`;
-    }}
+    transition: all ease .4s;
+    ${(props: ButtonScrollProps) => {
+        if(props.left) return css`
+            left: 0;
+            box-shadow: 0 0 .5em .5em ${({theme})=>theme.backgroundSecondary};
+            &:hover {
+                padding-left: ${metrics.extraSmallSpacingSize};
+            }
+        `;
+        if(props.right) return css`
+            right: 0;
+            box-shadow: 0 0 .5em .5em  ${({theme})=>theme.backgroundSecondary};
+            &:hover {
+                padding-right: ${metrics.extraSmallSpacingSize};
+            }
+        `;
+    }};
 `;
