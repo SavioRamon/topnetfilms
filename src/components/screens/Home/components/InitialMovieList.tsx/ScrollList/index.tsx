@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { 
     ButtonScroll, 
-    ScrollContent, 
+    ScrollContent,
     ScrollListContainer 
 } from "./style";
 import Film from "../Film";
@@ -28,8 +28,7 @@ export default function ScrollList({ listResults }: Props) {
 
     const scrollSpacingValue = (window.innerWidth / 2);
 
-    const scrollListRef = useRef<HTMLDivElement>(null);
-
+    const scrollListRef = useRef<HTMLUListElement>(null);
 
     function scrollingList(value: number) {
         // this function will change the value of the scroll margin in the movie list
@@ -75,7 +74,10 @@ export default function ScrollList({ listResults }: Props) {
             <ScrollListContainer ref={scrollListRef}>
 
                 {listResults.map((filmInfo, key)=>(
-                    <Film filmInfo={filmInfo} key={key} />
+                    <li key={key} >
+                        <Film filmInfo={filmInfo} key={key} />
+                    </li>
+                    
                 ))}
 
             </ScrollListContainer>

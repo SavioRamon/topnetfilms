@@ -9,7 +9,8 @@ export const ScrollContent = styled.div`
     overflow-y: hidden;
 `;
 
-export const ScrollListContainer = styled.div`
+export const ScrollListContainer = styled.ul`
+    list-style-type: none;
     display: flex;
     width: 100%;
     overflow: auto;
@@ -35,7 +36,7 @@ export const ButtonScroll = styled.button`
     font-size: calc(2rem + 2vw);
     color: ${({theme})=>theme.textColor};
     background-color: ${({theme})=>theme.backgroundSecondary};
-    opacity: .8;
+    opacity: .9;
     display: flex;
     align-items: center;
     transition: all ease .4s;
