@@ -1,5 +1,5 @@
 
-import InitialMovieList from "./components/InitialMovieList.tsx/InitialMovieList";
+import InitialMovieList from "./components/InitialMovieList/InitialMovieList";
 
 import { HomeContainer } from "./style";
 
