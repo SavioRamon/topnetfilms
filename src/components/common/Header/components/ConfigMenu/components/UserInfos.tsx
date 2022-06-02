@@ -14,13 +14,13 @@ const Content = styled.div`
 
 const Text = styled.div`
     padding-left: ${metrics.extraSmallSpacingSize};
-    font-size: calc(.9rem + .5vw);
+    font-size: 1em;
 `;
 
 const ConfigButton = styled.button`
     padding: .5em;
     cursor: pointer;
-    font-size: calc(1.3rem + .7vw);
+    font-size: 1.2em;
     background-color: inherit;
     color: ${({theme})=>theme.textColor};
     border: none;

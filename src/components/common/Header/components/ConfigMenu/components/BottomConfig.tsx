@@ -15,7 +15,7 @@ const Content = styled.div`
 const AuthButton = styled.button`
     padding: .3em 0;
     width: 100%;
-    font-size: calc(.8rem + .6vw);
+    font-size: 1em;
     border: none;
     cursor: pointer;
     color: ${({theme})=>theme.textColor};

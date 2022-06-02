@@ -1,7 +1,8 @@
-import styled, { createGlobalStyle, css } from "styled-components";
-import { Theme } from "./context/themeContext";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
     * {
         margin: 0;
         padding: 0;
@@ -16,9 +17,10 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
     }
     
-    body, input {
+    body, input, button {
         background-color: ${({theme})=>theme.backgroundColor};
         color: ${({theme})=>theme.textColor};
+        font-family: "Roboto", "sans-serif";
         
     };
 `;
