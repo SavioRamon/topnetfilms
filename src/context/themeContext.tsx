@@ -4,6 +4,7 @@ import { darkTheme, lightTheme } from "../styles";
 
 export type Theme = {
     backgroundColor: string,
+    backgroundSecondary: string,
     textColor: string;
 }
 
