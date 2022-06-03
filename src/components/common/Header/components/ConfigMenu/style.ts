@@ -12,8 +12,8 @@ export const Container = styled.div`
 `;
 
 export const UserImage = styled.img`
-    width: clamp(3rem, 3rem + 1vw, 3rem + 1vw);
-    height: clamp(3rem, 3rem + 1vw, 3rem + 1vw);
+    width: calc(2rem + 1.5vw);
+    height: calc(2rem + 1.5vw);
     background-color: transparent;
     color: transparent;
     overflow: hidden;
