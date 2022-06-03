@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import googleIcon from "../../../../../assets/googleIcon.svg";
+import googleIcon from "../../../../assets/images/icons/googleIcon.svg";
 import { useAuthentication } from "../../../../hooks";
 import metrics from "../../../../styles/metrics";
 import CONSTANTS from "../../../../utils/CONSTANTS";
