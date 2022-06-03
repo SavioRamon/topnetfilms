@@ -7,13 +7,13 @@ export type ThemePropsTypes = {
 
 export const darkTheme: ThemePropsTypes = {
     backgroundColor: "#0f0e0e",
-    backgroundSecondary: "#1c1c1c",
+    backgroundSecondary: "#18181c",
     textColor: "#fff",
 };
 
 
 export const lightTheme: ThemePropsTypes = {
     backgroundColor: "#FFF",
-    backgroundSecondary: "#c9c9c9",
+    backgroundSecondary: "#dee2ff",
     textColor: "#262626",
 };
