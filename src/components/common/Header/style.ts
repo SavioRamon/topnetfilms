@@ -7,6 +7,6 @@ export const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, .05);
+    background-color: ${({theme})=>theme.backgroundSecondary};
     border-bottom: .1vw solid #333;
 `;
