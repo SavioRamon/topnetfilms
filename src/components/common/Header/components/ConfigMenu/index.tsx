@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useAuthentication } from "../../../../../hooks";
-import { Container, UserImage } from "./style";
+import { Container, HiddenScreen, UserImage } from "./style";
 
 import images from "../../../../../assets/images";
 import OpenConfig from "./components/OpenConfig";
@@ -18,8 +18,7 @@ const ConfigBox = (): JSX.Element => {
     const returnImage = () => {
         if(!load) return userData?.photoURL? userData.photoURL : images.userDefault;
     };
-
-
+    
     return (
         <Container>
             <UserImage
@@ -28,7 +27,12 @@ const ConfigBox = (): JSX.Element => {
                 onClick={changeConfigDisplay} 
             />
 
-            { openConfig && <OpenConfig changeConfigDisplay={changeConfigDisplay} /> }
+            { openConfig && 
+                <Fragment>
+                    <HiddenScreen onClick={changeConfigDisplay} />
+                    <OpenConfig changeConfigDisplay={changeConfigDisplay} />
+                </Fragment>
+            }
         </Container>
 
     );

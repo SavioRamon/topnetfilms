@@ -19,7 +19,14 @@ export const UserImage = styled.img`
     overflow: hidden;
     border-radius: 50%;
     cursor: pointer;
-    border: .1vw solid #999;
+    border: .1vw solid #666;
 `;
 
+export const HiddenScreen = styled.div`
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+`;
 
