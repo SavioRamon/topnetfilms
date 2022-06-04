@@ -6,13 +6,16 @@ import UserInfos from "./UserInfos";
 
 
 const Content = styled.div`
-    margin-top: clamp(4rem, 4rem + 1.2vw, 4rem + 1.2vw);
     width: calc(10rem + 10vw);
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
     font-size: calc(.8rem + .6vw);
     background-color: ${({theme})=>theme.backgroundSecondary};
+    border-left: .1vw solid #333;
+    border-right: .1vw solid #333;
 `;
 
 const ContentWrapper = styled.div`
@@ -45,7 +48,7 @@ const OpenConfig = ({changeConfigDisplay}: Props): JSX.Element => {
                 <ToggleTheme />
             </ContentWrapper>
 
-            <BottomConfig changeConfigDisplay={changeConfigDisplay} /> 
+            <BottomConfig changeConfigDisplay={changeConfigDisplay} />
         </Content>
     );
 };
