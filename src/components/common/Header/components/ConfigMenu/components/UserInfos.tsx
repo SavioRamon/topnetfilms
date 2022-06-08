@@ -1,10 +1,13 @@
+import { useEffect } from "react";
 import styled from "styled-components";
+import images from "../../../../../../assets/images";
 import { useAuthentication } from "../../../../../../hooks";
 import metrics from "../../../../../../styles/metrics";
 
-import { AiTwotoneTool } from "react-icons/ai";
+import { UserImage } from "../style";
 
 const Content = styled.div`
+    padding: 1em 1em 1em .5em;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -13,35 +16,23 @@ const Content = styled.div`
 `;
 
 const Text = styled.div`
-    padding-left: ${metrics.extraSmallSpacingSize};
     font-size: 1em;
 `;
 
-const ConfigButton = styled.button`
-    padding: .5em;
-    cursor: pointer;
-    font-size: 1.2em;
-    background-color: inherit;
-    color: ${({theme})=>theme.textColor};
-    border: none;
-
-    &:hover {
-        background-color: rgba(140, 140, 140, 0.3);
-    }
-
-`;
 
 const UserInfos = ():JSX.Element => {
 
-    const { userData } = useAuthentication();
+    const { userData, loading } = useAuthentication();
+
+    const returnImage = () => {
+        if(!loading) return userData?.photoURL? userData.photoURL : "";
+    };
 
     return (
         <Content>
             <Text>{userData?.displayName}</Text>
-            
-            <ConfigButton>
-                <AiTwotoneTool />
-            </ConfigButton>
+            {!loading }
+            <UserImage src={returnImage()} alt="your user image"/>
         </Content>
     );
 };
