@@ -6,7 +6,7 @@ type UserDataType = Partial<User> | null;
 
 type Authentication = {
     userData: UserDataType;
-    load: boolean;
+    loading: boolean;
     authPersistence: () => void;
     authWithService: (value: string) => void;
     setName: React.Dispatch<React.SetStateAction<string>>;
@@ -22,7 +22,7 @@ export  const AuthContext = createContext({} as Authentication);
 export function AuthProvider({children}: {children: JSX.Element}) {
 
     const [userData, setUserData] = useState<UserDataType>(null);
-    const [load, setLoad] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
@@ -51,7 +51,7 @@ export function AuthProvider({children}: {children: JSX.Element}) {
                 setUserData({ displayName, email, photoURL, uid });
             };
             
-            setLoad(false);
+            setLoading(false);
         };
 
         authenticationAPI.autoLogin(setValues);
@@ -68,7 +68,7 @@ export function AuthProvider({children}: {children: JSX.Element}) {
     return (
         <AuthContext.Provider value={{
             userData,
-            load,
+            loading,
             authPersistence,
             authWithService,
             setName,

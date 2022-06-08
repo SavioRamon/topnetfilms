@@ -16,7 +16,7 @@ type HomeList = {
 
 type MovieListTypes = {
     homeList: HomeList[];
-    load: boolean;
+    loading: boolean;
     getHomeListDataFromApi: () => void;
 };
 
@@ -31,7 +31,7 @@ export const MovieListContext = createContext({} as MovieListTypes);
 export function MovieListProvider({children}: PropsTypes) {
 
     const [homeList, setHomeList] = useState<HomeList[]>([]);
-    const [load, setLoad] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     async function getHomeListDataFromApi() {
         const movieData = await tmdbGetHomeListData();
@@ -45,7 +45,7 @@ export function MovieListProvider({children}: PropsTypes) {
     return (
         <MovieListContext.Provider value={{
             homeList,
-            load,
+            loading,
             getHomeListDataFromApi
         }}>
             {children}
