@@ -6,17 +6,17 @@ import images from "../../../../../assets/images";
 import OpenConfig from "./components/OpenConfig";
 
 const ConfigBox = (): JSX.Element => {
-    const { userData, load } = useAuthentication();
+    const { userData, loading } = useAuthentication();
     const [openConfig, setOpenConfig] = useState(false);
 
     const changeConfigDisplay = () => {
-        if(!load) {
+        if(!loading) {
             setOpenConfig(!openConfig);
         };
     };
 
     const returnImage = () => {
-        if(!load) return userData?.photoURL? userData.photoURL : images.userDefault;
+        if(!loading) return userData?.photoURL? userData.photoURL : images.userDefault;
     };
     
     return (
