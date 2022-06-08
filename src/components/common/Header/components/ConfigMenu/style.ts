@@ -3,7 +3,6 @@ import metrics from "../../../../../styles/metrics";
 
 
 export const Container = styled.div`
-    margin-left: ${metrics.extraSmallSpacingSize};
     width: max-content;
     display: flex;
     flex-direction: row-reverse;
@@ -28,5 +27,6 @@ export const HiddenScreen = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+    background-color: rgba(0, 0, 0, .7);
 `;
 

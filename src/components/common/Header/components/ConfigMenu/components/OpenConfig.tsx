@@ -10,12 +10,17 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     position: fixed;
-    justify-content: center;
     align-items: center;
-    font-size: calc(.8rem + .6vw);
+    font-size: calc(.8rem + .5vw);
     background-color: ${({theme})=>theme.backgroundSecondary};
-    border-left: .1vw solid #333;
-    border-right: .1vw solid #333;
+    border: .1vw solid #333;
+
+    @media (max-width: 500px) {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: calc(1em + 80vw);
+    }
 `;
 
 const ContentWrapper = styled.div`

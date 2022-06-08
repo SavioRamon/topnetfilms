@@ -11,8 +11,8 @@ const Content = styled.h1`
 
 const LogoElement = styled.img`
     
-    width: calc(6rem + 3.5vw);
-    height: calc(2rem + 1.5vw);
+    width: calc(4.5rem + 4vw);
+    height: calc(1.5rem + 2vw);
     image-orientation: from-image;
 `;
 
