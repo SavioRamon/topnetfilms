@@ -1,7 +1,7 @@
 
 import { useLayoutEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { Content, GlobalStyle } from "./app.style";
+import { Content, GlobalStyle, MainContent } from "./app.style";
 import Header from "./components/common/Header";
 import { useAuthentication } from "./hooks";
 
@@ -19,7 +19,9 @@ export default function App(){
       <GlobalStyle />
       <Header />
       
-      <Outlet />
+      <MainContent>
+        <Outlet />
+      </MainContent>
     </Content>
   );
 };

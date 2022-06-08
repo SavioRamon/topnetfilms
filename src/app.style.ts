@@ -31,3 +31,6 @@ export const Content = styled.div`
     width: 100%;
 `;
 
+export const MainContent = styled.main`
+    margin-top: calc(1em + 4vw);
+`;
