@@ -1,16 +1,26 @@
 import { createContext, useState } from "react";
-import { tmdbGetHomeListData } from "../services/tmdb";
+import { tmdbGetHomeListData, tmdbGetSingleFilm } from "../services/tmdb";
+
+
+type FilmTypes = {
+    title: string;
+    tag_line: string;
+    status: string;
+    release_date: string;
+    poster_path: string;
+    adult: boolean;
+    genres: Array<{
+        id: number;
+        name: string;
+    }>;
+    vote_average: number;
+    video: boolean
+};
 
 type HomeList = {
     title: string;
     data: {
-        results: [
-            {
-                title: string;
-                release_date: string;
-                poster_path: string;
-            }
-        ]
+        results: Array<Pick<FilmTypes, "title" | "release_date" | "poster_path">>;
     }
 };
 
@@ -18,6 +28,7 @@ type MovieListTypes = {
     homeList: HomeList[];
     loading: boolean;
     getHomeListDataFromApi: () => void;
+    getSingleFilm: (id: string) => void;
 };
 
 type PropsTypes = {
@@ -31,6 +42,8 @@ export const MovieListContext = createContext({} as MovieListTypes);
 export function MovieListProvider({children}: PropsTypes) {
 
     const [homeList, setHomeList] = useState<HomeList[]>([]);
+    const [singleFilm, setSingleFilm] = useState();
+
     const [loading, setLoading] = useState(false);
 
     async function getHomeListDataFromApi() {
@@ -41,12 +54,18 @@ export function MovieListProvider({children}: PropsTypes) {
         };
 
     };
+
+    async function getSingleFilm(id: string) {
+        const film = await tmdbGetSingleFilm(id);
+        setSingleFilm(film);
+    };
     
     return (
         <MovieListContext.Provider value={{
             homeList,
             loading,
-            getHomeListDataFromApi
+            getHomeListDataFromApi,
+            getSingleFilm
         }}>
             {children}
         </MovieListContext.Provider>
