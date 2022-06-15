@@ -20,3 +20,8 @@ export const tmdbGetHomeListData = async () => {
         }
     ];
 };
+
+export const tmdbGetSingleFilm = async (id: string) => {
+    const Film = await basicFetch(`movie/${id}?`);
+    return Film;
+};
