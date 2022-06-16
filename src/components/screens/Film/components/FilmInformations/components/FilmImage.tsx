@@ -4,6 +4,7 @@ import { useMovieList } from "../../../../../../hooks";
 
 const LargeImage = styled.img`
     margin-left: calc(1rem + 1vw);
+    margin-bottom: calc(1rem + 1vw);
     width: calc(5rem + 27vw);
     height: calc(5rem + 32vw);
 
@@ -12,6 +13,7 @@ const LargeImage = styled.img`
         width: 95vw;
         height: 98vw;
     };
+    border-radius: 1em;
 `;
 
 export function FilmImage() {
