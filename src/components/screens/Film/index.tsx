@@ -1,7 +1,7 @@
 import { Fragment, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useMovieList } from "../../../hooks";
-import { Content, FilmInformations, LargeImage } from "./style";
+import { FilmInformations } from "./components/FilmInformations";
 
 
 export default function Film() {
@@ -23,12 +23,7 @@ export default function Film() {
     return (
         <Fragment>
             {singleFilm &&
-                <Content>
-                    <LargeImage src={`https://image.tmdb.org/t/p/original/${singleFilm.poster_path}`} alt={singleFilm.title} />
-                    <FilmInformations>
-                        
-                    </FilmInformations>
-                </Content>
+                <FilmInformations />
             }
         </Fragment>
     );
