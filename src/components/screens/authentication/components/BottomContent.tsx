@@ -13,7 +13,7 @@ const BottomContentDiv = styled.div`
 `;
 
 const TextInfo = styled.div`
-    font-size: calc(0.7rem + 0.5vw);
+    font-size: calc(.9rem + 0.3vw);
 `;
 
 const ListOfAcessServices = styled.ul`

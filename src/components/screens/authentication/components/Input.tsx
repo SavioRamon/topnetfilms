@@ -23,8 +23,8 @@ const LabelArea = styled.label`
 `;
 
 const InputIcon = styled.div`
-    padding: ${metrics.extraSmallSpacingSize};
-    font-size: calc(.8rem + .8vw);
+    padding: .5em;
+    font-size: calc(1rem + .8vw);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +35,7 @@ const InputElement = styled.input`
     width: 100%;
     border: none;
     outline: none;
-    font-size: calc(.8rem + .8vw);
+    font-size: calc(1rem + .8vw);
 `;
 
 type InputProps = {

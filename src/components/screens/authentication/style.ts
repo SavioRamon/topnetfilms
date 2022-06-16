@@ -25,8 +25,8 @@ export const ContentWrapper = styled.div`
 `;
 
 export const TitleAuth = styled.h1`
-    margin-bottom: ${metrics.extraSmallSpacingSize};
-    font-size: calc(1rem + 1vw);
+    margin-bottom: .3em;
+    font-size: calc(1.2rem + 1vw);
 `;
 
 export const FormAuthentication = styled.form`
@@ -34,20 +34,20 @@ export const FormAuthentication = styled.form`
 `;
 
 export const ButtonForm = styled.button`
-    margin: ${metrics.extraSmallSpacingSize} 0;
-    padding: ${metrics.extraSmallSpacingSize};
+    margin: .7em 0;
+    padding: .4em;
     width: 100%;
     border: none;
-    border-radius: ${metrics.extraSmallSpacingSize};
+    border-radius: .5em;
     background-color: ${colors.blue};
     color: #fff;
     cursor: pointer;
-    font-size: calc(.7rem + .7vw);
+    font-size: calc(1rem + .5vw);
     font-weight: bold;
 `;
 
 export const TextForm = styled.div`
-    font-size: calc(.7rem + .7vw);
+    font-size: calc(1rem + .5vw);
 `;
 
 export const ToggleScreenAuth = styled.span`
