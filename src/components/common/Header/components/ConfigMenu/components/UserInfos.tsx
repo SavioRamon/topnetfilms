@@ -1,8 +1,5 @@
-import { useEffect } from "react";
 import styled from "styled-components";
-import images from "../../../../../../assets/images";
 import { useAuthentication } from "../../../../../../hooks";
-import metrics from "../../../../../../styles/metrics";
 
 import { UserImage } from "../style";
 
