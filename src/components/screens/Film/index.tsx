@@ -1,13 +1,12 @@
-import { useLayoutEffect } from "react";
+import { Fragment, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useMovieList } from "../../../hooks";
-import { Content } from "./style";
-
+import { Content, FilmInformations, LargeImage } from "./style";
 
 
 export default function Film() {
 
-    const { getSingleFilm } = useMovieList();
+    const { singleFilm, getSingleFilm } = useMovieList();
     const { id } = useParams();
 
     useLayoutEffect(()=>{
@@ -22,8 +21,15 @@ export default function Film() {
     }, []);
 
     return (
-        <Content>
-
-        </Content>
+        <Fragment>
+            {singleFilm &&
+                <Content>
+                    <LargeImage src={`https://image.tmdb.org/t/p/original/${singleFilm.poster_path}`} alt={singleFilm.title} />
+                    <FilmInformations>
+                        
+                    </FilmInformations>
+                </Content>
+            }
+        </Fragment>
     );
 };
