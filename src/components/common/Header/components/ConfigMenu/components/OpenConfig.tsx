@@ -11,7 +11,7 @@ const Content = styled.div`
     flex-direction: column;
     position: fixed;
     align-items: center;
-    font-size: calc(.8rem + .5vw);
+    font-size: calc(1.1rem + .4vw);
     background-color: ${({theme})=>theme.backgroundSecondary};
     border: .1vw solid #333;
 
