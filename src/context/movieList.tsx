@@ -4,7 +4,8 @@ import { tmdbGetHomeListData, tmdbGetSingleFilm } from "../services/tmdb";
 
 type FilmTypes = {
     title: string;
-    tag_line: string;
+    tagline: string;
+    overview: string;
     status: string;
     release_date: string;
     poster_path: string;
@@ -48,16 +49,20 @@ export function MovieListProvider({children}: PropsTypes) {
     const [loading, setLoading] = useState(false);
 
     async function getHomeListDataFromApi() {
+        setLoading(true);
         const movieData = await tmdbGetHomeListData();
         if(movieData) {
             setHomeList(movieData);
+            setLoading(false);
         };
 
     };
 
     async function getSingleFilm(id: string) {
+        setLoading(true);
         const film = await tmdbGetSingleFilm(id);
         setSingleFilm(film);
+        setLoading(false);
     };
     
     return (
