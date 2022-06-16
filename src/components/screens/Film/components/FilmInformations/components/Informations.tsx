@@ -17,18 +17,20 @@ type TextTypes = {
 }
 
 const Text = styled.p`
-    font-size: calc(1.1em + .7vw);
     ${(props: TextTypes)=>{
         if(props.slogan) return css`
-            font-size: calc(1.1em + .6vw);
+            font-size: calc(1.1rem + .6vw);
             opacity: .8;
         `
         if(props.overview) return css`
-            margin-top: 1em;
-            font-size: calc(1.1em + .5vw);
+            font-size: calc(1.1rem + .5vw);
         `
     }}
+`;
 
+const OverviewTitle = styled.h3`
+    margin-top: 1em;
+    font-size: calc(1.1rem + 1vw);
 `;
 
 
@@ -41,8 +43,8 @@ export function Informations() {
             <FilmTitle>{singleFilm?.title}</FilmTitle>
             <Text slogan>{singleFilm?.tagline}</Text>
 
+            <OverviewTitle>Overview</OverviewTitle>
             <Text overview>
-                <Text>Overview</Text>
                 {singleFilm?.overview}
             </Text>
         </Content>
