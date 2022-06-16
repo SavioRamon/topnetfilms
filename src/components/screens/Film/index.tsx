@@ -6,7 +6,7 @@ import { FilmInformations } from "./components/FilmInformations";
 
 export default function Film() {
 
-    const { singleFilm, getSingleFilm } = useMovieList();
+    const { singleFilm, loading, getSingleFilm } = useMovieList();
     const { id } = useParams();
 
     useLayoutEffect(()=>{
@@ -22,7 +22,7 @@ export default function Film() {
 
     return (
         <Fragment>
-            {singleFilm &&
+            {singleFilm && !loading && 
                 <FilmInformations />
             }
         </Fragment>
