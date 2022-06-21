@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { useMovieList } from "../../../../../../hooks";
+import { FilmImage } from "./FilmImage";
 import GenreButton from "./GenreButton";
 
 const Content = styled.div`
@@ -16,6 +17,13 @@ const GenreList = styled.ul`
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
+`;
+
+const SpanText = styled.span`
+    margin: .5em 0;
+    font-size: calc(1.1rem + .5vw);
+    font-weight: bold;
+    display: block;
 `;
 
 type TextTypes = {
@@ -50,6 +58,8 @@ export function Informations() {
             <FilmTitle>{singleFilm?.title}</FilmTitle>
             <Text slogan>{singleFilm?.tagline}</Text>
 
+            <SpanText>{singleFilm?.release_date.replaceAll("-", "/")}</SpanText>
+
             {singleFilm && 
                 <GenreList>
                     {singleFilm.genres.map((item, key)=>(
@@ -60,6 +70,8 @@ export function Informations() {
                     ))}
                 </GenreList>
             }
+
+            <FilmImage  smallScreens />
 
             <OverviewTitle>Overview</OverviewTitle>
             <Text overview>

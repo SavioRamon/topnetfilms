@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import styled from "styled-components";
 import { useMovieList } from "../../../../../../hooks";
 
@@ -5,23 +6,39 @@ import { useMovieList } from "../../../../../../hooks";
 const LargeImage = styled.img`
     margin-left: calc(1rem + 1vw);
     margin-bottom: calc(1rem + 1vw);
-    width: calc(5rem + 27vw);
-    height: calc(5rem + 32vw);
+    width: calc(5rem + 28vw);
+    height: calc(5rem + 35vw);
+    border-radius: 1em;
 
     @media (max-width: 450px) {
-        margin-left: 0;
-        width: 95vw;
-        height: 98vw;
+        display: none;
     };
-    border-radius: 1em;
 `;
 
-export function FilmImage() {
+const SmallImage = styled.img`
+    margin-left: 0;
+    width: 80vw;
+    height: 83vw;
+    border-radius: 1em;
 
-    let { singleFilm } = useMovieList();
+    @media(min-width: 450px) {
+        display: none;
+    }
+`;
+
+
+type Props = {
+    smallScreens?: boolean;
+};
+
+export function FilmImage({smallScreens}: Props) {
+
+    const { singleFilm } = useMovieList();
+
+    const ImageComponent = smallScreens? SmallImage : LargeImage;
 
     return (
-        <LargeImage
+        <ImageComponent
             src={`https://image.tmdb.org/t/p/original/${singleFilm?.poster_path}`}
             alt={singleFilm?.title}
         />
