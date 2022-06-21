@@ -45,7 +45,7 @@ const Text = styled.p`
 
 const OverviewTitle = styled.h3`
     margin-top: 1em;
-    font-size: calc(1.1rem + 1vw);
+    font-size: calc(1.5rem + 1vw);
 `;
 
 

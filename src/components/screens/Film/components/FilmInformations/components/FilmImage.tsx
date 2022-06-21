@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+
 import styled from "styled-components";
 import { useMovieList } from "../../../../../../hooks";
 
@@ -16,6 +16,7 @@ const LargeImage = styled.img`
 `;
 
 const SmallImage = styled.img`
+    margin-top: calc(1rem + .4vw);
     margin-left: 0;
     width: 80vw;
     height: 83vw;
