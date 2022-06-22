@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import metrics from "../../../styles/metrics";
 
 export const HeaderContainer = styled.header`
-    height: calc(1em + 4vw);
-    min-height: 30px;
+    height: calc(2rem + 3vw);
     z-index: 10;
-    padding: ${metrics.extraSmallSpacingSize} ${metrics.smallSpacingSize};
+    padding: calc(1rem + .4vw);
     width: 100%;
     display: flex;
     justify-content: space-between;

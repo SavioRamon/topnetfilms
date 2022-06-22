@@ -29,5 +29,5 @@ export const Content = styled.div`
 `;
 
 export const MainContent = styled.main`
-    margin-top: calc(1em + 4vw);
+    margin-top: calc(2rem + 3vw);
 `;
