@@ -14,6 +14,7 @@ const ListTitle = styled.h2`
     margin-top: ${metrics.largeSpacingSize};
     margin-left: ${metrics.extraSmallSpacingSize};
     margin-bottom: ${metrics.extraSmallSpacingSize};
+    text-indent: 1em;
 `;
 
 
