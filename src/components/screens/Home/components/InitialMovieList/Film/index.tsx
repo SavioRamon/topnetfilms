@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import CONSTANTS from "../../../../../../utils/CONSTANTS";
-import { FilmContainer, FilmImage } from "./style";
+import { FilmButton, FilmImage, FilmTitle } from "./style";
 
 type FilmProps = {
     filmInfo: {
@@ -20,8 +20,12 @@ export default function Film({ filmInfo }: FilmProps) {
     };
 
     return (
-        <FilmContainer onClick={viewFilmDetails}>
+        <FilmButton  onClick={viewFilmDetails}>
             <FilmImage src={`https://image.tmdb.org/t/p/w200${filmInfo.poster_path}`} alt={filmInfo.title} />
-        </FilmContainer>
+            <FilmTitle>
+                {filmInfo.title}
+            </FilmTitle>
+        </FilmButton>
+        
     );
 };

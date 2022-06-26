@@ -1,14 +1,18 @@
 import styled from "styled-components";
-import metrics from "../../../../../../styles/metrics";
 
-export const FilmContainer = styled.div`
-    margin: 0 ${metrics.extraSmallSpacingSize};
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
+export const FilmButton = styled.button`
+
+    margin: calc(.4rem + .4vw);
+    padding: calc(.1rem + .1vw);
+    background-color: none;
+    border: none;
 `;
 
 export const FilmImage = styled.img`
     width: calc(7rem + 7vw);
     height: calc(7rem + 12vw);
+`;
+
+export const FilmTitle = styled.h2`
+    font-size: calc(1rem + .4vw);
 `;
