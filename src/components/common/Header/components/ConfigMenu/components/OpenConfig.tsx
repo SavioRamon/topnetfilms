@@ -50,10 +50,10 @@ const OpenConfig = ({changeConfigDisplay}: Props): JSX.Element => {
         if(e.key === "Enter") {
 
             const element = e.target as HTMLElement;
-            const parent = parentRef.current! as HTMLElement;
+            const parent = parentRef.current as HTMLElement | null;
 
             element.classList.forEach((iClass)=>{
-                if(parent.querySelector(`.${iClass}`) === null) {
+                if(parent?.querySelector(`.${iClass}`) === null) {
                     
                     changeConfigDisplay();
 
