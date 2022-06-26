@@ -5,6 +5,7 @@ export type ThemePropsTypes = {
     textColor: string;
 }
 
+
 export const darkTheme: ThemePropsTypes = {
     backgroundColor: "#0f0e0e",
     backgroundSecondary: "#18181c",
@@ -14,6 +15,6 @@ export const darkTheme: ThemePropsTypes = {
 
 export const lightTheme: ThemePropsTypes = {
     backgroundColor: "#FFF",
-    backgroundSecondary: "#dee2ff",
+    backgroundSecondary: "#cacee8",
     textColor: "#262626",
 };
