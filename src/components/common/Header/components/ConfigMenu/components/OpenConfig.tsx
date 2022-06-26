@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import styled from "styled-components";
 import { useAuthentication } from "../../../../../../hooks";
 import BottomConfig from "./BottomConfig";
@@ -41,9 +42,29 @@ type Props = {
 const OpenConfig = ({changeConfigDisplay}: Props): JSX.Element => {
 
     const { userData } = useAuthentication();
+    const parentRef = useRef(null);
+
+    window.onkeydown = (e) => {
+
+        // detect if the clicked element is a child of this component
+        if(e.key === "Enter") {
+
+            const element = e.target as HTMLElement;
+            const parent = parentRef.current! as HTMLElement;
+
+            element.classList.forEach((iClass)=>{
+                if(parent.querySelector(`.${iClass}`) === null) {
+                    
+                    changeConfigDisplay();
+
+                };
+            });
+        };
+    }
+
 
     return (
-        <Content>
+        <Content ref={parentRef}>
             {userData &&
                 <UserInfos />
             }
