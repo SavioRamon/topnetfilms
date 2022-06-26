@@ -7,7 +7,7 @@ type FilmProps = {
         title: string;
         release_date: string;
         poster_path: string;
-        id: string;
+        id: number;
     };
 }
 

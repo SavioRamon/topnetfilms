@@ -13,6 +13,7 @@ type ListResults = {
     title: string;
     release_date: string;
     poster_path: string;
+    id: number;
 };
 
 type Props = {
@@ -74,9 +75,9 @@ export default function ScrollList({ listResults }: Props) {
             <ScrollListContainer ref={scrollListRef}>
 
                 {listResults.map((filmInfo, key)=>(
-                    <li key={key} >
+                     <li key={key} >
                         <Film filmInfo={filmInfo} key={key} />
-                    </li>
+                    </li>    
                     
                 ))}
 

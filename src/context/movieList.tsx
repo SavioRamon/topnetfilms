@@ -3,6 +3,7 @@ import { tmdbGetHomeListData, tmdbGetSingleFilm } from "../services/tmdb";
 
 
 type FilmTypes = {
+    id: number;
     title: string;
     tagline: string;
     overview: string;
@@ -21,7 +22,7 @@ type FilmTypes = {
 type HomeList = {
     title: string;
     data: {
-        results: Array<Pick<FilmTypes, "title" | "release_date" | "poster_path">>;
+        results: Array<Pick<FilmTypes, "title" | "release_date" | "poster_path" | "id">>;
     }
 };
 
