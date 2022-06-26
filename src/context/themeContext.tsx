@@ -22,8 +22,6 @@ export const ThemeContextProvider = ({children}: {children: JSX.Element}) => {
         ...colors
     });
 
-    console.log(theme);
-
     const [darkThemeActived, setDarkThemeActived] = useState<boolean>(true);
 
     
