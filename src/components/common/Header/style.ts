@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: ${({theme})=>theme.backgroundSecondary};
+    background-color: ${({theme})=>theme.header};
     border-bottom: .1vw solid #333;
     position: fixed;
     top: 0;
