@@ -3,6 +3,7 @@ import { useTheme } from "../../../../../../hooks";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
 import styled, { css } from "styled-components";
+import ButtonContent from "./ButtonContent";
 
 
 const ToggleThemeContainer = styled.div`
@@ -46,16 +47,20 @@ export default function ToggleTheme() {
     }
 
     return (
-        <ToggleThemeContainer onClick={changeTheme}>
-            <ToggleThemeIcon darkThemeActived={darkThemeActived}>
-                
-                {darkThemeActived ? 
-                    <BsFillMoonFill />
-                :
-                    <BsFillSunFill />
-                }
+        <ButtonContent action={changeTheme}>
+            <ToggleThemeContainer>
+                <ToggleThemeIcon darkThemeActived={darkThemeActived}>
+                    
+                    {darkThemeActived ? 
+                        <BsFillMoonFill />
+                    :
+                        <BsFillSunFill />
+                    }
 
-            </ToggleThemeIcon>
-        </ToggleThemeContainer>
+                </ToggleThemeIcon>
+                
+            </ToggleThemeContainer>
+        </ButtonContent>
+        
     );
 };

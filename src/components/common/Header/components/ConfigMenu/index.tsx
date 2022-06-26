@@ -4,6 +4,7 @@ import { Container, HiddenScreen, UserImage } from "./style";
 
 import images from "../../../../../assets/images";
 import OpenConfig from "./components/OpenConfig";
+import ButtonContent from "./components/ButtonContent";
 
 const ConfigBox = (): JSX.Element => {
     const { userData, loading } = useAuthentication();
@@ -21,11 +22,13 @@ const ConfigBox = (): JSX.Element => {
     
     return (
         <Container>
-            <UserImage
-                src={returnImage()}
-                alt="your user image"
-                onClick={changeConfigDisplay} 
-            />
+            <ButtonContent action={changeConfigDisplay}>
+                <UserImage
+                    src={returnImage()}
+                    alt="your user image" 
+                />
+            </ButtonContent>
+            
 
             { openConfig && 
                 <Fragment>
