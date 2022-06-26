@@ -1,6 +1,7 @@
 import "styled-components";
-import {ThemePropsTypes} from "./index";
+import { ColorTypes } from "./colors";
+import { ThemePropsTypes } from "./index";
 
 declare module "styled-components" {
-    export interface DefaultTheme extends ThemePropsTypes { }
+    export interface DefaultTheme extends ThemePropsTypes, ColorTypes  { }
 }

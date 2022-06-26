@@ -1,12 +1,10 @@
 import { createContext, useLayoutEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "../styles";
 
-export type Theme = {
-    backgroundColor: string,
-    backgroundSecondary: string,
-    textColor: string;
-}
+import { darkTheme, lightTheme, ThemePropsTypes } from "../styles";
+import colors, { ColorTypes } from "../styles/colors";
+
+export type Theme = ThemePropsTypes & ColorTypes;
 
 type ThemeContextType = {
     darkThemeActived: boolean;
@@ -14,12 +12,18 @@ type ThemeContextType = {
 };
 
 
+
 export const ThemeContext = createContext({} as ThemeContextType);
     
-
 export const ThemeContextProvider = ({children}: {children: JSX.Element}) => {
     
-    const [theme, setTheme] = useState<Theme>(darkTheme);
+    const [theme, setTheme] = useState<Theme>({
+        ...darkTheme,
+        ...colors
+    });
+
+    console.log(theme);
+
     const [darkThemeActived, setDarkThemeActived] = useState<boolean>(true);
 
     
@@ -33,8 +37,8 @@ export const ThemeContextProvider = ({children}: {children: JSX.Element}) => {
     useLayoutEffect(()=>{
         // Load the respective theme after changing darkThemeActived
 
-        if(darkThemeActived) setTheme(darkTheme);
-        else setTheme(lightTheme);
+        if(darkThemeActived) setTheme({...theme, ...darkTheme});
+        else setTheme({...theme, ...lightTheme});
     }, [darkThemeActived]);
 
 
