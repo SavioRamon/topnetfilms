@@ -7,17 +7,11 @@ import {
 import Film from "../Film";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { FilmTypes } from "../../../../../../context/movieList";
 
-
-type ListResults = {
-    title: string;
-    release_date: string;
-    poster_path: string;
-    id: number;
-};
 
 type Props = {
-    listResults: ListResults[];
+    listResults: FilmTypes[];
 }
 
 export default function ScrollList({ listResults }: Props) {

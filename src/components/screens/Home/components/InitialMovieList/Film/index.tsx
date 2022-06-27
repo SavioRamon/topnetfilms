@@ -1,14 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { FilmTypes } from "../../../../../../context/movieList";
 import CONSTANTS from "../../../../../../utils/CONSTANTS";
 import { FilmButton, FilmImage, FilmTitle } from "./style";
 
 type FilmProps = {
-    filmInfo: {
-        title: string;
-        release_date: string;
-        poster_path: string;
-        id: number;
-    };
+    filmInfo: FilmTypes;
 }
 
 export default function Film({ filmInfo }: FilmProps) {
