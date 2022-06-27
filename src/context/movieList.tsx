@@ -19,16 +19,16 @@ export type FilmTypes = {
     video: boolean
 };
 
-type ApiResultListTypes = {
+export type ApiResultListTypes = {
     page: number;
     results: Array<FilmTypes>;
     total_pages: number;
     total_results: number;
-} | null;
+};
 
-type HomeList = {
+export type HomeList = {
     title: string;
-    data: ApiResultListTypes;
+    data: ApiResultListTypes | null;
 };
 
 
@@ -61,23 +61,21 @@ export function MovieListProvider({children}: PropsTypes) {
     async function getHomeListDataFromApi() {
         setLoading(true);
         const movieData = await tmdbGetHomeListData();
-        if(movieData) {
-            setHomeList(movieData);
-            setLoading(false);
-        };
+        movieData && setHomeList(movieData);
+        setLoading(false);
 
     };
 
     async function getSingleFilm(id: string) {
         setLoading(true);
         const film = await tmdbGetSingleFilm(id);
-        setSingleFilm(film);
+        film && setSingleFilm(film);
         setLoading(false);
     };
 
     async function getSearchResults(query: string) {
-        const results: ApiResultListTypes = await tmdbGetSearchResults(query);
-        setSearchResults(results);
+        const results = await tmdbGetSearchResults(query);
+        results && setSearchResults(results);
     };
     
     return (

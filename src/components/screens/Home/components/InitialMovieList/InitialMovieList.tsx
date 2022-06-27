@@ -28,15 +28,16 @@ export default function InitialMovieList() {
     return (
         <InitialMovieListContainer>
 
-            {homeList && homeList.map((listItem, key) => (
-                <Fragment key={key}>
-
-                    <ListTitle>{listItem.title}</ListTitle>
-
-                    <ScrollList listResults={listItem.data.results} />
-
-                </Fragment>
-            ))}
+            {homeList.map((listItem, key) => {
+                if(listItem.data) {
+                    return (
+                        <Fragment key={key}>
+                            <ListTitle>{listItem.title}</ListTitle>
+                            <ScrollList listResults={listItem.data.results} />
+                        </Fragment>
+                    );
+                };   
+            })}
 
         </InitialMovieListContainer>
     );

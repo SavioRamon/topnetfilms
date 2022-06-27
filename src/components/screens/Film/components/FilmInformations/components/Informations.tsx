@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import styled, { css } from "styled-components";
 import { useMovieList } from "../../../../../../hooks";
 import { FilmImage } from "./FilmImage";
@@ -55,28 +56,33 @@ export function Informations() {
 
     return (
         <Content>
-            <FilmTitle>{singleFilm?.title}</FilmTitle>
-            <Text slogan>{singleFilm?.tagline}</Text>
+            {singleFilm &&
+            <Fragment>
+                <FilmTitle>{singleFilm.title}</FilmTitle>
+                <Text slogan>{singleFilm.tagline}</Text>
 
-            <SpanText>{singleFilm?.release_date.replaceAll("-", "/")}</SpanText>
+                <SpanText>{singleFilm.release_date.replaceAll("-", "/")}</SpanText>
 
-            {singleFilm && 
-                <GenreList>
-                    {singleFilm.genres.map((item, key)=>(
-                        <GenreButton
-                            key={key}
-                            genre={item}
-                        />
-                    ))}
-                </GenreList>
+                {singleFilm && 
+                    <GenreList>
+                        {singleFilm.genres.map((item, key)=>(
+                            <GenreButton
+                                key={key}
+                                genre={item}
+                            />
+                        ))}
+                    </GenreList>
+                }
+
+                <FilmImage  smallScreens />
+
+                <OverviewTitle>Overview</OverviewTitle>
+                <Text overview>
+                    {singleFilm.overview}
+                </Text>
+            </Fragment>
             }
-
-            <FilmImage  smallScreens />
-
-            <OverviewTitle>Overview</OverviewTitle>
-            <Text overview>
-                {singleFilm?.overview}
-            </Text>
+            
         </Content>
     );
 };
