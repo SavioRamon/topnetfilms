@@ -1,10 +1,11 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAuthentication } from "../../../../../../hooks";
 import metrics from "../../../../../../styles/metrics";
 
 import { BiLogOut, BiLogIn, BiUser } from "react-icons/bi";
+import CONSTANTS from "../../../../../../utils/CONSTANTS";
 
 
 const Content = styled.div`
@@ -39,10 +40,16 @@ type Props = {
 
 const BottomConfig = ({changeConfigDisplay}: Props):JSX.Element => {
     const { userData, disconnect } = useAuthentication();
+    const navigate = useNavigate();
 
     const disconnecting = () => {
         changeConfigDisplay();
         disconnect();
+    };
+
+    const redirect = (screen: string) => {
+        changeConfigDisplay();
+        navigate(screen)
     };
 
     return (
@@ -55,17 +62,13 @@ const BottomConfig = ({changeConfigDisplay}: Props):JSX.Element => {
                 :
 
                 <Fragment>
-                    <Link to="login">
-                        <AuthButton onClick={changeConfigDisplay}>
-                            <BiLogIn /> Login
-                        </AuthButton>
-                    </Link>
+                    <AuthButton onClick={()=>redirect(CONSTANTS.ROUTES.LOGIN)}>
+                        <BiLogIn /> Login
+                    </AuthButton>
 
-                    <Link to="register">
-                        <AuthButton onClick={changeConfigDisplay}>
-                            <BiUser /> Sign Up
-                        </AuthButton>
-                    </Link>
+                    <AuthButton onClick={()=>redirect(CONSTANTS.ROUTES.REGISTER)}>
+                        <BiUser /> Sign Up
+                    </AuthButton>
                 </Fragment>
             }
             
