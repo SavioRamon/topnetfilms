@@ -6,6 +6,7 @@ export const FilmButton = styled.button`
     padding: calc(.1rem + .1vw);
     background-color: none;
     border: none;
+    cursor: pointer;
 `;
 
 export const FilmImage = styled.img`
