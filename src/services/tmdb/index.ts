@@ -4,8 +4,13 @@ const otherInfos = `language=en&api_key=${API_KEY}`;
 
 const basicFetch = async (reqDetails: string) => {
     const data = await fetch(`${BASE_API}/${reqDetails}&${otherInfos}`);
-    const json = await data.json();
-    return json;
+    if(data.status === 200) {
+        const json = await data.json();
+        return json;
+
+    } else {
+        return null;
+    }
 };
 
 export const tmdbGetHomeListData = async () => {
@@ -24,4 +29,10 @@ export const tmdbGetHomeListData = async () => {
 export const tmdbGetSingleFilm = async (id: string) => {
     const Film = await basicFetch(`movie/${id}?`);
     return Film;
+};
+
+export const tmdbGetSearchResults = async (query: string) => {
+    query = encodeURI(query);
+    const results = await basicFetch(`search/movie?query=${query}`);
+    return results;
 };

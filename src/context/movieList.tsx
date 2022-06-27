@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
-import { tmdbGetHomeListData, tmdbGetSingleFilm } from "../services/tmdb";
+import { tmdbGetHomeListData, tmdbGetSearchResults, tmdbGetSingleFilm } from "../services/tmdb";
 
 
-type FilmTypes = {
+export type FilmTypes = {
     id: number;
     title: string;
     tagline: string;
@@ -19,19 +19,27 @@ type FilmTypes = {
     video: boolean
 };
 
+type ApiResultListTypes = {
+    page: number;
+    results: Array<FilmTypes>;
+    total_pages: number;
+    total_results: number;
+} | null;
+
 type HomeList = {
     title: string;
-    data: {
-        results: Array<Pick<FilmTypes, "title" | "release_date" | "poster_path" | "id">>;
-    }
+    data: ApiResultListTypes;
 };
+
 
 type MovieListTypes = {
     homeList: HomeList[];
     singleFilm: FilmTypes | undefined;
+    searchResults: ApiResultListTypes | undefined;
     loading: boolean;
     getHomeListDataFromApi: () => void;
     getSingleFilm: (id: string) => void;
+    getSearchResults: (query: string) => void;
 };
 
 type PropsTypes = {
@@ -46,6 +54,7 @@ export function MovieListProvider({children}: PropsTypes) {
 
     const [homeList, setHomeList] = useState<HomeList[]>([]);
     const [singleFilm, setSingleFilm] = useState<FilmTypes>();
+    const [searchResults, setSearchResults] = useState<ApiResultListTypes>();
 
     const [loading, setLoading] = useState(false);
 
@@ -65,14 +74,21 @@ export function MovieListProvider({children}: PropsTypes) {
         setSingleFilm(film);
         setLoading(false);
     };
+
+    async function getSearchResults(query: string) {
+        const results: ApiResultListTypes = await tmdbGetSearchResults(query);
+        setSearchResults(results);
+    };
     
     return (
         <MovieListContext.Provider value={{
             homeList,
             singleFilm,
+            searchResults,
             loading,
             getHomeListDataFromApi,
-            getSingleFilm
+            getSingleFilm,
+            getSearchResults
         }}>
             {children}
         </MovieListContext.Provider>

@@ -19,6 +19,7 @@ export default function RouterComponent(){
                     <Route path="register" element={<Register />} />
 
                     <Route path="search" element={<Search />} />
+                    <Route path="search/:query" element={<Search />} />
                     <Route path="film" element={<Search />} />
 
                     <Route path="film/:id" element={<Film />} />
