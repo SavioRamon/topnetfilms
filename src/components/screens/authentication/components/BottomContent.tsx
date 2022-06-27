@@ -25,9 +25,13 @@ const ListOfAcessServices = styled.ul`
     list-style-type: none;
 `;
 
+const Button = styled.button`
+    border: none;
+    cursor: pointer;
+`;
+
 const ListItem = styled.li`
     border-radius: 50%;
-    cursor: pointer;
 `;
 
 const ListItemImage = styled.img`
@@ -51,10 +55,11 @@ export default function BottomContent() {
             <TextInfo>Or continue with</TextInfo>
 
             <ListOfAcessServices>
-                <ListItem onClick={() => handleService(CONSTANTS.PARAMS.GOOGLE)}>
-                    <ListItemImage src={googleIcon} alt="google icon" />
-                </ListItem>
-                
+                    <ListItem>
+                        <Button onClick={() => handleService(CONSTANTS.PARAMS.GOOGLE)}>
+                            <ListItemImage src={googleIcon} alt="google icon" />
+                        </Button>
+                    </ListItem>
             </ListOfAcessServices>
         </BottomContentDiv>
     );
