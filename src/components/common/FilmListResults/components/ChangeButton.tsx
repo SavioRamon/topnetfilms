@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-    margin-bottom: .5em;
     background-color: inherit;
     border: none;
     cursor: pointer;
+
 `;
 
 type Props = {

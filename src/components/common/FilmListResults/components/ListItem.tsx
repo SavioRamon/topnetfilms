@@ -14,6 +14,7 @@ const Content = styled.li`
     align-items: flex-start;
     background-color: ${({theme})=>theme.backgroundSecondary};
     font-size: calc(1rem + .5vw);
+    overflow: hidden;
 `;
 
 const Wrapper = styled.div`
@@ -38,8 +39,10 @@ const ListItem = (props: Props) => {
 
     return (
         <Content>
-            <ImageItem image_url={props.Film.poster_path} />
-
+            <ChangeButton action={navigateToFilmScreen}>
+                <ImageItem image_url={props.Film.poster_path} />
+            </ChangeButton>
+            
             <Wrapper>
                 <ChangeButton action={navigateToFilmScreen}>
                     <TextItem text={props.Film.title} title={true} />

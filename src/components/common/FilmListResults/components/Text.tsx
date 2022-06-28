@@ -11,6 +11,7 @@ const Text = styled.p`
             font-weight: bolder;
         `
         else return css`
+            margin-top: .3em;
             font-size: 1em;
             font-weight: normal;
         `;
