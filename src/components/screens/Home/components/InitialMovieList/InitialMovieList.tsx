@@ -36,9 +36,9 @@ export default function InitialMovieList() {
                             <ScrollList listResults={listItem.data.results} />
                         </Fragment>
                     );
-                };   
+                }   
             })}
 
         </InitialMovieListContainer>
     );
-};
+}

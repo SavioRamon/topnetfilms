@@ -14,7 +14,7 @@ export default function Film() {
         const fetchFilmId = () => {
             if(id) {
                 getSingleFilm(id);
-            };
+            }
         };
 
         fetchFilmId();
@@ -27,4 +27,4 @@ export default function Film() {
             }
         </Fragment>
     );
-};
+}

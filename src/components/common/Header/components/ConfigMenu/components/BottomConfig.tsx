@@ -49,7 +49,7 @@ const BottomConfig = ({changeConfigDisplay}: Props):JSX.Element => {
 
     const redirect = (screen: string) => {
         changeConfigDisplay();
-        navigate(screen)
+        navigate(screen);
     };
 
     return (

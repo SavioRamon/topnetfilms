@@ -30,7 +30,7 @@ export const ThemeContextProvider = ({children}: {children: JSX.Element}) => {
         
         setDarkThemeActived(!darkThemeActived);
         localStorage.setItem("darkThemeActived", JSON.stringify(!darkThemeActived));
-    };
+    }
 
     useLayoutEffect(()=>{
         // Load the respective theme after changing darkThemeActived
@@ -47,7 +47,7 @@ export const ThemeContextProvider = ({children}: {children: JSX.Element}) => {
         if(typeof isDarkThemeActived === "string") {
             const parseTheme: boolean = JSON.parse(isDarkThemeActived);
             setDarkThemeActived(parseTheme);
-        };
+        }
     }, []);
     
     

@@ -20,4 +20,4 @@ export default function Search() {
             
         </Container>
     );
-};
+}

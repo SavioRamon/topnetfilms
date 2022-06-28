@@ -70,19 +70,19 @@ export function MovieListProvider({children}: PropsTypes) {
         movieData && setHomeList(movieData);
         setLoading(false);
 
-    };
+    }
 
     async function getSingleFilm(id: string) {
         setLoading(true);
         const film = await tmdbGetSingleFilm(id);
         film && setSingleFilm(film);
         setLoading(false);
-    };
+    }
 
     async function getSearchResults(query: string) {
         const results = await tmdbGetSearchResults(query);
         results && setSearchResults(results);
-    };
+    }
 
     async function getGenreResults(query:string) {
         setLoading(true);
@@ -105,4 +105,4 @@ export function MovieListProvider({children}: PropsTypes) {
             {children}
         </MovieListContext.Provider>
     );
-};
+}

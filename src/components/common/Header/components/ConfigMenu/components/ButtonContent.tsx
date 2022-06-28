@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 
 const Button = styled.button`
@@ -21,6 +21,6 @@ const ButtonContent = (props: ButtonProps) => {
             {props.children}
         </Button>
     );
-}
+};
 
 export default ButtonContent;

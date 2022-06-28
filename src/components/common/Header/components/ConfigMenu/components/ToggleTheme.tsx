@@ -30,11 +30,11 @@ const ToggleThemeIcon = styled.div`
         if(props.darkThemeActived) return css`
             float: right;
             color: #fff;
-        `
+        `;
         else return css`
             float: left;
             color: yellow;
-        `
+        `;
     }};
 `;
 
@@ -63,4 +63,4 @@ export default function ToggleTheme() {
         </ButtonContent>
         
     );
-};
+}

@@ -20,4 +20,4 @@ export function FilmInformations() {
         </Content>
     );
 
-};
+}

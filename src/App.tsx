@@ -24,4 +24,4 @@ export default function App(){
       </MainContent>
     </Content>
   );
-};
+}

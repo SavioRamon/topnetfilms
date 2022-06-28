@@ -24,4 +24,4 @@ export default function Film({ filmInfo }: FilmProps) {
         </FilmButton>
         
     );
-};
+}

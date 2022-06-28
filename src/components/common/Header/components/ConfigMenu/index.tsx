@@ -13,7 +13,7 @@ const ConfigBox = (): JSX.Element => {
     const changeConfigDisplay = () => {
         if(!loading) {
             setOpenConfig(!openConfig);
-        };
+        }
     };
 
     const returnImage = () => {

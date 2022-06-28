@@ -16,8 +16,8 @@ export default function SearchBar() {
 
         if(inputValue) {
             navigate(`${CONSTANTS.ROUTES.SEARCH}/${inputValue}`);
-        };
-    };
+        }
+    }
 
     return (
         <Container onSubmit={search}>
@@ -25,4 +25,4 @@ export default function SearchBar() {
             <SearchButton />
         </Container>
     );
-};
+}

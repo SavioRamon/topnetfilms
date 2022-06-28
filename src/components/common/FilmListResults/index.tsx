@@ -9,7 +9,7 @@ const ListWrapper = styled.ul`
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
-`
+`;
 
 const FilmListResults = () => {
 

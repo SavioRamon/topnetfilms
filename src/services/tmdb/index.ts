@@ -44,4 +44,4 @@ export const tmdbGetGenreResults = async (query: string) => {
     const results: ApiResultListTypes | null = await basicFetch(`discover/movie?with_genres=${query}`);
     return results;
 
-}
+};

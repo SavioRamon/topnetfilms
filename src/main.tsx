@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import RootContext from './context';
-import RouterComponent from './routes';
+import React from "react";
+import ReactDOM from "react-dom";
+import RootContext from "./context";
+import RouterComponent from "./routes";
 
 
 ReactDOM.render(
@@ -12,5 +12,5 @@ ReactDOM.render(
 
     </RootContext>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

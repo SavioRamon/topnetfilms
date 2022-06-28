@@ -4,7 +4,7 @@ const ROUTES = {
     SEARCH: "search",
     FILM: "film",
     GENRE: "genre"
-}
+};
 
 const PARAMS = {
     GOOGLE: "GOOGLE"

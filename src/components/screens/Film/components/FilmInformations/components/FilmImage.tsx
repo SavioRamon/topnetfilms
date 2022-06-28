@@ -44,4 +44,4 @@ export function FilmImage({smallScreens}: Props) {
             alt={singleFilm?.title}
         />
     );
-};
+}

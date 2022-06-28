@@ -25,7 +25,7 @@ export default function Register() {
     useEffect(()=>{
         if(userData) {
             navigate("/", {replace: true});
-        };
+        }
     }, [userData]);
 
     return (
@@ -34,7 +34,7 @@ export default function Register() {
                 <TitleAuth>Create Account</TitleAuth>
 
                 <FormAuthentication onSubmit={(e)=>{
-                    e.preventDefault()
+                    e.preventDefault();
                 }}>
                     <Input 
                         id="name"
@@ -73,4 +73,4 @@ export default function Register() {
             </ContentWrapper>
         </ScreenAuth>
     );
-};
+}

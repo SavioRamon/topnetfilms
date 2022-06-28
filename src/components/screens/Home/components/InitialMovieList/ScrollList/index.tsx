@@ -36,17 +36,17 @@ export default function ScrollList({ listResults }: Props) {
             const maxScrollValueLeft = (divScroll.scrollWidth - divScroll.clientWidth);
 
             if(newScrollValue <= 0) {
-                setActiveButtons({...activeButtons, leftButton: false})
+                setActiveButtons({...activeButtons, leftButton: false});
             
             } else if(newScrollValue >= maxScrollValueLeft) {
-                setActiveButtons({...activeButtons, rightButton: false})
+                setActiveButtons({...activeButtons, rightButton: false});
             
             } else {
-                setActiveButtons({leftButton: true, rightButton: true})
-            };
+                setActiveButtons({leftButton: true, rightButton: true});
+            }
 
             divScroll.scrollLeft = newScrollValue;
-        };
+        }
     }
 
     useLayoutEffect(()=>{
@@ -87,4 +87,4 @@ export default function ScrollList({ listResults }: Props) {
         </ScrollContent>
         
     );
-};
+}

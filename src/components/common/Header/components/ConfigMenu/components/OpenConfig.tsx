@@ -57,10 +57,10 @@ const OpenConfig = ({changeConfigDisplay}: Props): JSX.Element => {
                     
                     changeConfigDisplay();
 
-                };
+                }
             });
-        };
-    }
+        }
+    };
 
 
     return (

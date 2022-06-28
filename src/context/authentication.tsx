@@ -38,7 +38,7 @@ export function AuthProvider({children}: {children: JSX.Element}) {
 
         const service = authenticationServices[value as keyof typeof authenticationServices];
         service();
-    };
+    }
 
     function authPersistence() {
         /* 
@@ -49,18 +49,18 @@ export function AuthProvider({children}: {children: JSX.Element}) {
             if(value) {
                 const { displayName, email, photoURL, uid } = value;
                 setUserData({ displayName, email, photoURL, uid });
-            };
+            }
             
             setLoading(false);
-        };
+        }
 
         authenticationAPI.autoLogin(setValues);
-    };
+    }
 
     async function disconnect() {
         authenticationAPI.disconnectUser()
           .then(()=>setUserData(null));
-    };
+    }
 
 
     
@@ -79,4 +79,4 @@ export function AuthProvider({children}: {children: JSX.Element}) {
             {children}
         </AuthContext.Provider>
     );
-};
+}

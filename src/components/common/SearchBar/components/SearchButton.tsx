@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 import { FaSearch } from "react-icons/fa";
 
@@ -18,5 +18,5 @@ export default function SearchButton() {
         <Button>
             <FaSearch />
         </Button>
-    )
+    );
 }

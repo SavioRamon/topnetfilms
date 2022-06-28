@@ -23,4 +23,4 @@ export default function SearchInput() {
             placeholder="Search Film"
         />
     );
-};
+}

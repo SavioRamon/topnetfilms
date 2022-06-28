@@ -10,7 +10,7 @@ const Text = styled.p`
         else return css`
             font-size: 1em;
             font-weight: normal;
-        `
+        `;
     }}
 `;
 

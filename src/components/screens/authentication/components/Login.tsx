@@ -25,7 +25,7 @@ export default function Login() {
     useEffect(()=>{
         if(userData) {
             navigate("/", {replace: true});
-        };
+        }
     }, [userData]);
 
     return (
@@ -34,7 +34,7 @@ export default function Login() {
                 <TitleAuth>Login</TitleAuth>
 
                 <FormAuthentication onSubmit={(e)=>{
-                    e.preventDefault()
+                    e.preventDefault();
                 }}>
                     <Input 
                         id="email"
@@ -66,4 +66,4 @@ export default function Login() {
             </ContentWrapper>
         </ScreenAuth>
     );
-};
+}

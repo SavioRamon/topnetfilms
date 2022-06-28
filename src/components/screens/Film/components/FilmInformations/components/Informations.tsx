@@ -37,10 +37,10 @@ const Text = styled.p`
         if(props.slogan) return css`
             font-size: calc(1.1rem + .6vw);
             opacity: .8;
-        `
+        `;
         if(props.overview) return css`
             font-size: calc(1.1rem + .5vw);
-        `
+        `;
     }}
 `;
 
@@ -85,4 +85,4 @@ export function Informations() {
             
         </Content>
     );
-};
+}

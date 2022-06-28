@@ -23,7 +23,7 @@ export const authenticationAPI = {
             await signInWithPopup(auth, provider);
         } catch (error: any) {
             alert(error.message);
-        };
+        }
     },
 
     autoLogin(callback: (user: User | null)=>void) {
@@ -40,6 +40,6 @@ export const authenticationAPI = {
             return result;
         } catch (error: any) {
             alert(error.message);
-        };
+        }
     }
 };

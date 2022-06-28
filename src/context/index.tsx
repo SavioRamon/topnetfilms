@@ -16,7 +16,7 @@ const RootContext = ({ children }: RootContextProps) => {
                 </MovieListProvider>
             </AuthProvider>
         </ThemeContextProvider>
-    )
+    );
 };
 
 export default RootContext;

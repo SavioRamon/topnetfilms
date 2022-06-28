@@ -16,6 +16,6 @@ const ImageItem = ({ image_url }: Props) => {
             alt="Image logo"
         />
     );
-}
+};
 
 export default ImageItem;

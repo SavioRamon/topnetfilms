@@ -5,7 +5,7 @@ const Button = styled.button`
     background-color: inherit;
     border: none;
     cursor: pointer;
-`
+`;
 
 type Props = {
     children: JSX.Element;
