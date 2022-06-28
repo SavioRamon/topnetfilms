@@ -38,3 +38,10 @@ export const tmdbGetSearchResults = async (query: string) => {
     const results: ApiResultListTypes | null = await basicFetch(`search/movie?query=${query}`);
     return results;
 };
+
+export const tmdbGetGenreResults = async (query: string) => {
+    query = encodeURI(query);
+    const results: ApiResultListTypes | null = await basicFetch(`discover/movie?with_genres=${query}`);
+    return results;
+
+}

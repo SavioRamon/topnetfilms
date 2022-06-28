@@ -1,5 +1,10 @@
 import { createContext, useState } from "react";
-import { tmdbGetHomeListData, tmdbGetSearchResults, tmdbGetSingleFilm } from "../services/tmdb";
+import {
+    tmdbGetGenreResults,
+    tmdbGetHomeListData,
+    tmdbGetSearchResults,
+    tmdbGetSingleFilm
+} from "../services/tmdb";
 
 
 export type FilmTypes = {
@@ -40,6 +45,7 @@ type MovieListTypes = {
     getHomeListDataFromApi: () => void;
     getSingleFilm: (id: string) => void;
     getSearchResults: (query: string) => void;
+    getGenreResults: (query: string) => void;
 };
 
 type PropsTypes = {
@@ -77,6 +83,13 @@ export function MovieListProvider({children}: PropsTypes) {
         const results = await tmdbGetSearchResults(query);
         results && setSearchResults(results);
     };
+
+    async function getGenreResults(query:string) {
+        setLoading(true);
+        const results = await tmdbGetGenreResults(query);
+        results && setSearchResults(results);
+        setLoading(false);
+    }
     
     return (
         <MovieListContext.Provider value={{
@@ -86,7 +99,8 @@ export function MovieListProvider({children}: PropsTypes) {
             loading,
             getHomeListDataFromApi,
             getSingleFilm,
-            getSearchResults
+            getSearchResults,
+            getGenreResults
         }}>
             {children}
         </MovieListContext.Provider>

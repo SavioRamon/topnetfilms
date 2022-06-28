@@ -2,7 +2,8 @@ const ROUTES = {
     LOGIN: "login",
     REGISTER: "register",
     SEARCH: "search",
-    FILM: "film"
+    FILM: "film",
+    GENRE: "genre"
 }
 
 const PARAMS = {
