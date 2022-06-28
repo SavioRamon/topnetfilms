@@ -8,6 +8,7 @@ import TextItem from "./Text";
 
 const Content = styled.li`
     margin: 1em 0;
+    height: calc(10rem + 7.5vw);
     width: 100%;
     display: flex;
     align-items: flex-start;

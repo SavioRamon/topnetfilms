@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 const Text = styled.p`
     ${(props: {isTitle: boolean}) => {
         if(props.isTitle) return css`
-            font-size: 1.5em;  
+            font-size: 1.3em;  
             font-weight: bold;
         `; 
         else return css`
