@@ -5,7 +5,8 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
     onAuthStateChanged,
-    signOut
+    signOut,
+    User
 } from "firebase/auth";
 
 import firebaseConfig from "./firebaseConfig";
@@ -25,7 +26,7 @@ export const authenticationAPI = {
         };
     },
 
-    autoLogin(callback: (user: {} | null)=>void) {
+    autoLogin(callback: (user: User | null)=>void) {
         onAuthStateChanged(auth, (user) => {
 
             if(user) callback(user);
