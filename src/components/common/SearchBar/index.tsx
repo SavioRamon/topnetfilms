@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CONSTANTS from "../../../utils/CONSTANTS";
 import SearchButton from "./components/SearchButton";
 import SearchInput from "./components/SearchInput";
