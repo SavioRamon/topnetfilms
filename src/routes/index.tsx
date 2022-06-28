@@ -6,6 +6,7 @@ import Register from "../components/screens/authentication/components/Register";
 import Home from "../components/screens/Home";
 import Search from "../components/screens/Search";
 import Film from "../components/screens/Film";
+import Genre from "../components/screens/Genre";
 
 
 export default function RouterComponent(){
@@ -21,6 +22,8 @@ export default function RouterComponent(){
                     <Route path="search" element={<Search />} />
                     <Route path="search/:query" element={<Search />} />
                     <Route path="film" element={<Search />} />
+
+                    <Route path="genre/:query" element={<Genre />} />
 
                     <Route path="film/:id" element={<Film />} />
                 </Route>
