@@ -1,10 +1,5 @@
 import { createContext, useState } from "react";
-import {
-    tmdbGetGenreResults,
-    tmdbGetHomeListData,
-    tmdbGetSearchResults,
-    tmdbGetSingleFilm
-} from "../services/tmdb";
+import { tmdb } from "../services/tmdb";
 
 
 export type FilmTypes = {
@@ -64,31 +59,32 @@ export function MovieListProvider({children}: PropsTypes) {
 
     const [loading, setLoading] = useState(false);
 
-    async function getHomeListDataFromApi() {
+    const getHomeListDataFromApi = async () => {
         setLoading(true);
-        const movieData = await tmdbGetHomeListData();
+        const movieData = await tmdb.getHomeListData()
+            .finally(() => { setLoading(false) });
         movieData && setHomeList(movieData);
-        setLoading(false);
-
     }
 
-    async function getSingleFilm(id: string) {
+    const getSingleFilm = async (id: string) => {
         setLoading(true);
-        const film = await tmdbGetSingleFilm(id);
+        const film = await tmdb.getSingleFilm(id)
+            .finally(() => { setLoading(false) });
         film && setSingleFilm(film);
-        setLoading(false);
     }
 
-    async function getSearchResults(query: string) {
-        const results = await tmdbGetSearchResults(query);
-        results && setSearchResults(results);
-    }
-
-    async function getGenreResults(query:string) {
+    const getSearchResults = async (query: string) => {
         setLoading(true);
-        const results = await tmdbGetGenreResults(query);
+        const results = await tmdb.getSearchResults(query)
+            .finally(() => { setLoading(false) });
         results && setSearchResults(results);
-        setLoading(false);
+    }
+
+    const getGenreResults =  async (query:string) => {
+        setLoading(true);
+        const results = await tmdb.getGenreResults(query)
+            .finally(() => { setLoading(false) });
+        results && setSearchResults(results);
     }
     
     return (

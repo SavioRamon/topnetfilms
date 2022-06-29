@@ -15,33 +15,35 @@ const basicFetch = async (reqDetails: string) => {
     }
 };
 
-export const tmdbGetHomeListData = async (): Promise<HomeList[]> => {
-    return [
-        {
-            title: "Popular",
-            data: await basicFetch("movie/popular?")
-        },
-        {
-            title: "Trending",
-            data: await basicFetch("trending/movie/day?")
-        }
-    ];
-};
+export const tmdb = {
 
-export const tmdbGetSingleFilm = async (id: string) => {
-    const Film: FilmTypes | null = await basicFetch(`movie/${id}?`);
-    return Film;
-};
+    getHomeListData: async (): Promise<HomeList[]> => {
+        return [
+            {
+                title: "Popular",
+                data: await basicFetch("movie/popular?")
+            },
+            {
+                title: "Trending",
+                data: await basicFetch("trending/movie/day?")
+            }
+        ];
+    },
 
-export const tmdbGetSearchResults = async (query: string) => {
-    query = encodeURI(query);
-    const results: ApiResultListTypes | null = await basicFetch(`search/movie?query=${query}`);
-    return results;
-};
+    getSingleFilm: async (id: string) => {
+        const Film: FilmTypes | null = await basicFetch(`movie/${id}?`);
+        return Film;
+    },
 
-export const tmdbGetGenreResults = async (query: string) => {
-    query = encodeURI(query);
-    const results: ApiResultListTypes | null = await basicFetch(`discover/movie?with_genres=${query}`);
-    return results;
+    getSearchResults: async (query: string) => {
+        query = encodeURI(query);
+        const results: ApiResultListTypes | null = await basicFetch(`search/movie?query=${query}`);
+        return results;
+    },
 
+    getGenreResults: async (query: string) => {
+        query = encodeURI(query);
+        const results: ApiResultListTypes | null = await basicFetch(`discover/movie?with_genres=${query}`);
+        return results;
+    }
 };
