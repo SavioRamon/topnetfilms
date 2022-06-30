@@ -4,9 +4,10 @@ import App from "../App";
 import Login from "../components/screens/authentication/components/Login";
 import Register from "../components/screens/authentication/components/Register";
 import Home from "../components/screens/Home";
-import Search from "../components/screens/Search";
 import Film from "../components/screens/Film";
-import Genre from "../components/screens/Genre";
+import Search from "../components/screens/Search";
+import SearchByName from "../components/screens/Search/components/SearchByName";
+import SearchByGenre from "../components/screens/Search/components/SearchByGenre";
 
 
 export default function RouterComponent(){
@@ -19,11 +20,11 @@ export default function RouterComponent(){
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
 
-                    <Route path="search" element={<Search />} />
-                    <Route path="search/:query" element={<Search />} />
                     <Route path="film" element={<Search />} />
-
-                    <Route path="genre/:query" element={<Genre />} />
+                    <Route path="search" element={<Search />}>
+                        <Route path="genre/:query" element={<SearchByGenre />} />
+                        <Route path="name/:query" element={<SearchByName />} />
+                    </Route>
 
                     <Route path="film/:id" element={<Film />} />
                 </Route>

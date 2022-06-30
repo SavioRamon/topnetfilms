@@ -1,15 +1,10 @@
-import { useLayoutEffect } from "react";
+import { Fragment, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
-import { useMovieList } from "../../../hooks";
-import FilmListResults from "../../common/FilmListResults";
+import { useMovieList } from "../../../../hooks";
+import FilmListResults from "./FilmListResults";
 
-const Container = styled.section`
-    width: 100%;
-    display: flex;
-`;
 
-const Genre = () => {
+const SearchByGenre = () => {
 
     const { searchResults, getGenreResults, loading } = useMovieList();
     const { query } = useParams();
@@ -19,15 +14,15 @@ const Genre = () => {
             const queryConverted = decodeURI(query.replaceAll(" ", ","));
             getGenreResults(queryConverted);
         }
-    }, []);
+    }, [query]);
 
     return (
-        <Container>
+        <Fragment>
             {!loading && searchResults &&
                 <FilmListResults />
             }
-        </Container>
+        </Fragment>
     );
 };
 
-export default Genre;
+export default SearchByGenre;
