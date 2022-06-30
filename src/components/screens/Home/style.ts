@@ -12,3 +12,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
 `;
+
+export const SearchWrapper = styled.div`
+    width: calc(20rem + 10vw);
+`;
