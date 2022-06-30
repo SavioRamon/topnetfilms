@@ -1,4 +1,4 @@
-import { ApiResultListTypes, FilmTypes, HomeList } from "../../context/movieList";
+import { ApiResultListTypes, FilmTypes, GenreListData, HomeList } from "../../context/movieList";
 
 const BASE_API = "https://api.themoviedb.org/3";
 const API_KEY = "3783a8ddb11beaabb09ac6d2dad893f8";
@@ -44,6 +44,11 @@ export const tmdb = {
     getGenreResults: async (query: string) => {
         query = encodeURI(query);
         const results: ApiResultListTypes | null = await basicFetch(`discover/movie?with_genres=${query}`);
+        return results;
+    },
+
+    getGenreList: async () => {
+        const results: GenreListData | null = await basicFetch(`genre/movie/list?`);
         return results;
     }
 };

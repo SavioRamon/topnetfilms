@@ -31,16 +31,25 @@ export type HomeList = {
     data: ApiResultListTypes | null;
 };
 
+export type GenreListData = {
+    genres: Array<{
+        id: string;
+        name: string;
+    }>
+};
+
 
 type MovieListTypes = {
     homeList: HomeList[];
     singleFilm: FilmTypes | undefined;
     searchResults: ApiResultListTypes | undefined;
     loading: boolean;
+    genreList: GenreListData | undefined;
     getHomeListDataFromApi: () => void;
     getSingleFilm: (id: string) => void;
     getSearchResults: (query: string) => void;
     getGenreResults: (query: string) => void;
+    getGenreList: () => void;
 };
 
 type PropsTypes = {
@@ -56,6 +65,7 @@ export function MovieListProvider({children}: PropsTypes) {
     const [homeList, setHomeList] = useState<HomeList[]>([]);
     const [singleFilm, setSingleFilm] = useState<FilmTypes>();
     const [searchResults, setSearchResults] = useState<ApiResultListTypes>();
+    const [genreList, setGenreList] = useState<GenreListData>();
 
     const [loading, setLoading] = useState(false);
 
@@ -86,6 +96,13 @@ export function MovieListProvider({children}: PropsTypes) {
             .finally(() => { setLoading(false) });
         results && setSearchResults(results);
     }
+
+    const getGenreList = async () => {
+        setLoading(true);
+        const results = await tmdb.getGenreList()
+            .finally(() => { setLoading(false) });
+        results && setGenreList(results);
+    };
     
     return (
         <MovieListContext.Provider value={{
@@ -93,10 +110,12 @@ export function MovieListProvider({children}: PropsTypes) {
             singleFilm,
             searchResults,
             loading,
+            genreList,
             getHomeListDataFromApi,
             getSingleFilm,
             getSearchResults,
-            getGenreResults
+            getGenreResults,
+            getGenreList
         }}>
             {children}
         </MovieListContext.Provider>
