@@ -12,7 +12,11 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-    
+    margin: 0 calc(.6rem + 1vw);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const AsideContent = styled.div`

@@ -4,7 +4,6 @@ import { useMovieList } from "../../../../../hooks";
 import ListItem from "./components/ListItem";
 
 const ListWrapper = styled.ul`
-    margin: 0 calc(.6rem + 1vw);
     flex: 1;
     list-style-type: none;
     display: flex;
