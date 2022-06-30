@@ -11,7 +11,7 @@ export const Container = styled.div`
     }
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
     margin: 0 calc(.6rem + 1vw);
     flex: 1;
     display: flex;
@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
     align-items: center;
 `;
 
-export const AsideContent = styled.div`
+export const AsideContent = styled.aside`
     width: calc(10rem + 15vw);
     height: min-content;
     display: flex;
