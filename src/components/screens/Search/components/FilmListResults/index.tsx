@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import styled from "styled-components";
-import { useMovieList } from "../../../hooks";
+import { useMovieList } from "../../../../../hooks";
 import ListItem from "./components/ListItem";
 
 const ListWrapper = styled.ul`

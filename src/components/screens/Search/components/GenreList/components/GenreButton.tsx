@@ -2,46 +2,46 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import CONSTANTS from "../../../../../../utils/CONSTANTS";
 
-
 const Item = styled.li`
-    margin: .3em;
-    margin-left: 0;
-    background-color: ${({theme})=>theme.backgroundSecondary};
-    font-size: calc(1rem + .4vw);
-    border-radius: 1em;
+    width: 100%;
+    &:hover {
+        border-left: .5em solid ${({theme})=>theme.blue};
+    }
+    font-size: 1em;
 `;
 
 const Button = styled.button`
     padding: .4em;
-    border: none;
+    text-indent: 1em;
+    width: 100%;
     background-color: inherit;
-    font-size: inherit;
-    font-weight: bold;
-    border-radius: inherit;
+    border: none;
     cursor: pointer;
+    font-size: 1em;
+    text-align: start;
 `;
 
 type Props = {
     genre: {
-        id: number;
         name: string;
+        id: string;
     };
 };
 
-
-export default function InputGenre({genre}: Props) {
-
+const GenreButton = ({genre}: Props) => {
     const navigate = useNavigate();
 
-    const goToGenreScreen = () => {
+    const navigateToGenreScreen = () => {
         navigate(`/${CONSTANTS.ROUTES.SEARCH_GENRE}/${genre.id}`);
     };
 
     return (
         <Item>
-            <Button onClick={goToGenreScreen}>
+            <Button onClick={navigateToGenreScreen}>
                 {genre.name}
             </Button>
-        </Item>
+        </Item>   
     );
 }
+
+export default GenreButton;

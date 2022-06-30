@@ -1,26 +1,32 @@
 import { useLayoutEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useMovieList } from "../../../hooks";
-import FilmListResults from "../../common/FilmListResults";
-import { Container } from "./style";
+import SearchBar from "../../common/SearchBar";
+import GenreList from "./components/GenreList";
+import { AsideContent, Container } from "./style";
 
 
 
-export default function Search() {
+const Search = () => {
 
-    const { getSearchResults, searchResults, loading } = useMovieList();
-    const { query } = useParams();
-    
+    const { genreList, getGenreList } = useMovieList();
 
     useLayoutEffect(()=>{
-        if(query) getSearchResults(query);
+        !genreList && getGenreList();
     }, []);
 
     return (
         <Container>
-            {!loading && searchResults && 
-                <FilmListResults />
-            }
+            <AsideContent>
+                <SearchBar />
+                {genreList &&
+                    <GenreList />
+                }
+            </AsideContent>
+            
+            <Outlet />
         </Container>
     );
-}
+};
+
+export default Search;
