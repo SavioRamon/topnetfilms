@@ -1,7 +1,9 @@
 import { Fragment, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useMovieList } from "../../../../hooks";
+import { Wrapper } from "../style";
 import FilmListResults from "./FilmListResults";
+import TextTotalResults from "./TextTotalResults";
 
 
 const SearchByGenre = () => {
@@ -17,11 +19,14 @@ const SearchByGenre = () => {
     }, [query]);
 
     return (
-        <Fragment>
+        <Wrapper>
             {!loading && searchResults &&
-                <FilmListResults />
+                <Fragment>
+                    <TextTotalResults total={searchResults.total_results} />
+                    <FilmListResults />
+                </Fragment>
             }
-        </Fragment>
+        </Wrapper>
     );
 };
 
