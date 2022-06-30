@@ -11,6 +11,9 @@ const Button = styled.button`
     border-radius: 0 1em 1em 0;
     display: flex;
     align-items: center;
+    &:hover {
+        color: ${({theme})=>theme.blue};
+    }
 `;
 
 export default function SearchButton() {
