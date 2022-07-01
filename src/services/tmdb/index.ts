@@ -1,4 +1,4 @@
-import { ApiResultListTypes, FilmTypes, GenreListData, HomeList } from "../../context/movieList";
+import { ApiResultListTypes, FilmTypes, GenreListTypes, HomeList } from "../../store/ducks/filmList";
 
 const BASE_API = "https://api.themoviedb.org/3";
 const API_KEY = "3783a8ddb11beaabb09ac6d2dad893f8";
@@ -11,13 +11,13 @@ const basicFetch = async (reqDetails: string) => {
         return json;
 
     } else {
-        return null;
+        return undefined;
     }
 };
 
 export const tmdb = {
 
-    getHomeListData: async (): Promise<HomeList[]> => {
+    getHomeListData: async (): Promise<HomeList> => {
         return [
             {
                 title: "Popular",
@@ -31,24 +31,24 @@ export const tmdb = {
     },
 
     getSingleFilm: async (id: string) => {
-        const Film: FilmTypes | null = await basicFetch(`movie/${id}?`);
+        const Film: FilmTypes | undefined = await basicFetch(`movie/${id}?`);
         return Film;
     },
 
     getSearchResults: async (query: string) => {
         query = encodeURI(query);
-        const results: ApiResultListTypes | null = await basicFetch(`search/movie?query=${query}`);
+        const results: ApiResultListTypes | undefined = await basicFetch(`search/movie?query=${query}`);
         return results;
     },
 
     getGenreResults: async (query: string) => {
         query = encodeURI(query);
-        const results: ApiResultListTypes | null = await basicFetch(`discover/movie?with_genres=${query}`);
+        const results: ApiResultListTypes | undefined = await basicFetch(`discover/movie?with_genres=${query}`);
         return results;
     },
 
     getGenreList: async () => {
-        const results: GenreListData | null = await basicFetch(`genre/movie/list?`);
+        const results: GenreListTypes | undefined = await basicFetch(`genre/movie/list?`);
         return results;
     }
 };

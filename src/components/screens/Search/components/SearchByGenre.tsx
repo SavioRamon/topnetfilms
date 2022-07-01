@@ -1,6 +1,7 @@
-import { Fragment, useLayoutEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useMovieList } from "../../../../hooks";
+import { searchByFilmGenreReq } from "../../../../store/ducks/filmList";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { Wrapper } from "../style";
 import FilmListResults from "./FilmListResults";
 import TextTotalResults from "./TextTotalResults";
@@ -8,13 +9,14 @@ import TextTotalResults from "./TextTotalResults";
 
 const SearchByGenre = () => {
 
-    const { searchResults, getGenreResults, loading } = useMovieList();
+    const {searchResults, loading} = useAppSelector(state=>state.filmList);
+    const dispatch = useAppDispatch();
     const { query } = useParams();
 
-    useLayoutEffect(()=>{
+    useEffect(()=>{
         if(query) {
             const queryConverted = decodeURI(query.replaceAll(" ", ","));
-            getGenreResults(queryConverted);
+            dispatch(searchByFilmGenreReq(queryConverted));
         }
     }, [query]);
 

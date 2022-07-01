@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { FilmTypes } from "../../../../../../context/movieList";
+import { FilmTypes } from "../../../../../../store/ducks/filmList";
 import CONSTANTS from "../../../../../../utils/CONSTANTS";
 import { FilmButton, FilmImage, FilmTitle } from "./style";
 

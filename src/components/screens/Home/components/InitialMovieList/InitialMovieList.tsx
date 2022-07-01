@@ -1,6 +1,7 @@
 import { Fragment, useEffect } from "react";
 import styled from "styled-components";
-import { useMovieList } from "../../../../../hooks";
+import { homeListReq } from "../../../../../store/ducks/filmList";
+import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
 import metrics from "../../../../../styles/metrics";
 import ScrollList from "./ScrollList";
 
@@ -19,10 +20,11 @@ const ListTitle = styled.h2`
 
 
 export default function InitialMovieList() {
-    const { homeList, getHomeListDataFromApi } = useMovieList();
+    const homeList = useAppSelector(state=>state.filmList.homeList);
+    const dispatch = useAppDispatch();
     
     useEffect(()=>{
-        getHomeListDataFromApi();
+        dispatch(homeListReq());
     }, []);
 
     return (

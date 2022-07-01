@@ -1,9 +1,10 @@
-import { Fragment, memo, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import { useMovieList } from "../../../../../hooks";
 import GenreButton from "./components/GenreButton";
 
 import { IoMdArrowDropright, IoMdArrowDropdown } from "react-icons/io";
+import { useAppDispatch, useAppSelector } from "../../../../../store/hooks";
+import { genreListReq } from "../../../../../store/ducks/filmList";
 
 const Content = styled.div`
     display: flex;
@@ -41,8 +42,15 @@ const OpenItems = styled.button`
 `;
 
 const GenreList = () => {
-    const { genreList } = useMovieList();
+
+    const genreList = useAppSelector(state=>state.filmList.genreList);
     const [openItems, setOpenItems] = useState(false);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(()=>{
+        !genreList && dispatch(genreListReq());
+    }, []);
 
     return (
         <Content>
@@ -67,4 +75,4 @@ const GenreList = () => {
     );
 }
 
-export default memo(GenreList);
+export default GenreList;

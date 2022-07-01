@@ -1,20 +1,19 @@
 import { Fragment, useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useMovieList } from "../../../hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { FilmInformations } from "./components/FilmInformations";
+import { singleFilmReq } from "../../../store/ducks/filmList";
 
 
 export default function Film() {
+    const filmList = useAppSelector(state=>state.filmList);
+    const dispatch = useAppDispatch();
 
-    const { singleFilm, loading, getSingleFilm } = useMovieList();
     const { id } = useParams();
 
     useLayoutEffect(()=>{
-        
         const fetchFilmId = () => {
-            if(id) {
-                getSingleFilm(id);
-            }
+            id && dispatch(singleFilmReq(id));
         };
 
         fetchFilmId();
@@ -22,7 +21,7 @@ export default function Film() {
 
     return (
         <Fragment>
-            {singleFilm && !loading && 
+            {filmList.singleFilm && !filmList.loading && 
                 <FilmInformations />
             }
         </Fragment>

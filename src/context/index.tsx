@@ -1,5 +1,4 @@
 import { AuthProvider } from "./authentication";
-import { MovieListProvider } from "./movieList";
 import { ThemeContextProvider } from "./themeContext";
 
 
@@ -11,9 +10,7 @@ const RootContext = ({ children }: RootContextProps) => {
     return (
         <ThemeContextProvider>
             <AuthProvider>
-                <MovieListProvider>
                     { children }
-                </MovieListProvider>
             </AuthProvider>
         </ThemeContextProvider>
     );

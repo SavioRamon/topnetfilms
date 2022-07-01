@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import styled, { css } from "styled-components";
-import { useMovieList } from "../../../../../../hooks";
+import { useAppSelector } from "../../../../../../store/hooks";
 import { FilmImage } from "./FilmImage";
 import GenreButton from "./GenreButton";
 
@@ -52,7 +52,7 @@ const OverviewTitle = styled.h3`
 
 export function Informations() {
 
-    const { singleFilm } = useMovieList();
+    const singleFilm = useAppSelector(state=>state.filmList.singleFilm);
 
     return (
         <Content>

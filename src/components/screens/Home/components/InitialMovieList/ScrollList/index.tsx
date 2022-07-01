@@ -7,7 +7,7 @@ import {
 import Film from "../Film";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { FilmTypes } from "../../../../../../context/movieList";
+import { FilmTypes } from "../../../../../../store/ducks/filmList";
 
 
 type Props = {

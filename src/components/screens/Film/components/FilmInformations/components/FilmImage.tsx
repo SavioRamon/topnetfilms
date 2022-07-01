@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import { useMovieList } from "../../../../../../hooks";
+import { useAppSelector } from "../../../../../../store/hooks";
 
 
 const LargeImage = styled.img`
@@ -34,7 +34,7 @@ type Props = {
 
 export function FilmImage({smallScreens}: Props) {
 
-    const { singleFilm } = useMovieList();
+    const singleFilm = useAppSelector(state=>state.filmList.singleFilm);
 
     const ImageComponent = smallScreens? SmallImage : LargeImage;
 

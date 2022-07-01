@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import styled from "styled-components";
-import { useMovieList } from "../../../../../hooks";
+import { useAppSelector } from "../../../../../store/hooks";
 import ListItem from "./components/ListItem";
 
 const ListWrapper = styled.ul`
@@ -12,7 +12,7 @@ const ListWrapper = styled.ul`
 
 const FilmListResults = () => {
 
-    const { searchResults } = useMovieList();
+    const searchResults = useAppSelector(state=>state.filmList.searchResults);
 
     return (
         <ListWrapper>

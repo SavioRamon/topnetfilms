@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import ImageItem from "./Image";
-import { FilmTypes } from "../../../../../../context/movieList";
 import ChangeButton from "./ChangeButton";
 import { useNavigate } from "react-router-dom";
 import CONSTANTS from "../../../../../../utils/CONSTANTS";
 import TextItem from "./Text";
+import { FilmTypes } from "../../../../../../store/ducks/filmList";
 
 const Content = styled.li`
     margin-bottom: 1.5em;
