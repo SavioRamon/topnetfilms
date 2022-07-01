@@ -14,11 +14,12 @@ const Item = styled.li`
 const Button = styled.button`
     padding: .4em;
     border: none;
-    background-color: inherit;
+    background-color: ${(props)=>props.theme.blue};
     font-size: inherit;
     font-weight: bold;
     border-radius: inherit;
     cursor: pointer;
+    color: #fff;
 `;
 
 type Props = {
