@@ -12,7 +12,7 @@ type Props = {
 const ImageItem = ({ image_url }: Props) => {
     return (
         <Image 
-            src={`https://image.tmdb.org/t/p/original/${image_url}`}
+            src={`https://image.tmdb.org/t/p/w500/${image_url}`}
             alt="Image logo"
         />
     );
