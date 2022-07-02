@@ -17,7 +17,7 @@ export default function Film({ filmInfo }: FilmProps) {
 
     return (
         <FilmButton  onClick={viewFilmDetails}>
-            <FilmImage src={`https://image.tmdb.org/t/p/w200${filmInfo.poster_path}`} alt={filmInfo.title} />
+            <FilmImage src={`https://image.tmdb.org/t/p/w300${filmInfo.poster_path}`} alt={filmInfo.title} />
             <FilmTitle>
                 {filmInfo.title}
             </FilmTitle>
