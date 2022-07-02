@@ -32,7 +32,7 @@ export type HomeList = Array<{
 
 export type GenreListTypes = {
     genres: Array<{
-        id: string;
+        id: number;
         name: string;
     }>
 };
