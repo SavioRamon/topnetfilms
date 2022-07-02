@@ -1,12 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { Fragment } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import styled, { css } from "styled-components";
+import { useAppSelector } from "../../../../../../store/hooks";
 import CONSTANTS from "../../../../../../utils/CONSTANTS";
 
 const Item = styled.li`
     width: 100%;
-    &:hover {
-        border-left: .5em solid ${({theme})=>theme.blue};
-    }
     font-size: 1em;
 `;
 
@@ -19,28 +18,50 @@ const Button = styled.button`
     cursor: pointer;
     font-size: 1em;
     text-align: start;
+    transition: background-color ease 0.5s;
+
+    &:active {
+        background-color: ${({theme})=>theme.blue};
+        transition: none;
+    }
+
+    &:hover {
+        border-left: .5em solid ${({theme})=>theme.blue};
+    }
+
+    ${(props: {active: boolean})=>{
+        if(props.active) return css`
+            background-color: ${({theme})=>theme.blue};
+            border-left: .5em solid ${({theme})=>theme.blue};
+        `
+    }}
 `;
 
-type Props = {
-    genre: {
-        name: string;
-        id: string;
-    };
-};
-
-const GenreButton = ({genre}: Props) => {
+const GenreButton = () => {
     const navigate = useNavigate();
+    const genreList = useAppSelector(state=>state.filmList.genreList)!;
+    const { query } = useParams();
 
-    const navigateToGenreScreen = () => {
-        navigate(`/${CONSTANTS.ROUTES.SEARCH_GENRE}/${genre.id}`);
+    const navigateToGenreScreen = (id: number) => {
+        navigate(`/${CONSTANTS.ROUTES.SEARCH_GENRE}/${id}`);
     };
+
+
 
     return (
-        <Item>
-            <Button onClick={navigateToGenreScreen}>
-                {genre.name}
-            </Button>
-        </Item>   
+        <Fragment>
+            {genreList.genres.map((genre, key)=>(
+                <Item key={key}>
+                    <Button
+                        onClick={()=>navigateToGenreScreen(genre.id)}
+                        active={(parseInt(query!) === genre.id)}
+                    >
+                        {genre.name}
+                    </Button>
+                </Item>
+            ))}
+        </Fragment>
+        
     );
 }
 
