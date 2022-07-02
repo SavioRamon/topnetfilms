@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import GenreButton from "./components/GenreButton";
 
@@ -64,11 +64,9 @@ const GenreList = () => {
             </OpenItems>
 
             <List open={openItems}>
-                {genreList?.genres?.map((genre, key)=>(
-                    <Fragment key={key}>
-                        <GenreButton genre={genre} />
-                    </Fragment>
-                ))}
+                {genreList?.genres &&
+                    <GenreButton />
+                }
             </List>
         </Content>
         
