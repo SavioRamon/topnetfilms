@@ -19,7 +19,7 @@ const Button = styled.button`
     font-weight: bold;
     border-radius: inherit;
     cursor: pointer;
-    color: #fff;
+    color: ${({theme})=>theme.white};
 `;
 
 type Props = {

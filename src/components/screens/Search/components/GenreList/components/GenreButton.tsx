@@ -22,6 +22,7 @@ const Button = styled.button`
 
     &:active {
         background-color: ${({theme})=>theme.blue};
+        color: ${({theme})=>theme.white};
         transition: none;
     }
 
@@ -32,6 +33,7 @@ const Button = styled.button`
     ${(props: {active: boolean})=>{
         if(props.active) return css`
             background-color: ${({theme})=>theme.blue};
+            color: ${({theme})=>theme.white};
             border-left: .5em solid ${({theme})=>theme.blue};
         `
     }}
