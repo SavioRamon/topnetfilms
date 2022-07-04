@@ -12,7 +12,7 @@ export default function App(){
 
   useLayoutEffect(()=>{
     authPersistence();
-  }, []);
+  }, [authPersistence]);
   
   return (
     <Content>

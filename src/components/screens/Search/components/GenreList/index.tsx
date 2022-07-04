@@ -50,8 +50,9 @@ const GenreList = () => {
 
     useEffect(()=>{
         !genreList && dispatch(genreListReq());
-    }, []);
+    }, [dispatch, genreList]);
 
+    
     return (
         <Content>
             <OpenItems onClick={()=>setOpenItems(!openItems)}>

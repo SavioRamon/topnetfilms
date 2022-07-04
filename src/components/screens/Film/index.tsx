@@ -17,7 +17,7 @@ export default function Film() {
         };
 
         fetchFilmId();
-    }, []);
+    }, [dispatch, id]);
 
     return (
         <Fragment>

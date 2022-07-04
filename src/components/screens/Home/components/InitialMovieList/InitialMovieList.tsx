@@ -25,7 +25,7 @@ export default function InitialMovieList() {
     
     useEffect(()=>{
         dispatch(homeListReq());
-    }, []);
+    }, [dispatch]);
 
     return (
         <InitialMovieListContainer>

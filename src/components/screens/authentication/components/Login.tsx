@@ -26,8 +26,8 @@ export default function Login() {
         if(userData) {
             navigate("/", {replace: true});
         }
-    }, [userData]);
-
+    }, [userData, navigate]);
+    
     return (
         <ScreenAuth>
             <ContentWrapper>

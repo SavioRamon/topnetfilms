@@ -26,7 +26,7 @@ export default function Register() {
         if(userData) {
             navigate("/", {replace: true});
         }
-    }, [userData]);
+    }, [userData, navigate]);
 
     return (
         <ScreenAuth>
