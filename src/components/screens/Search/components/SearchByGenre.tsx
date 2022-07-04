@@ -18,7 +18,7 @@ const SearchByGenre = () => {
         const query = `with_genres=${genres}&page=${page}`;
         
         dispatch(searchByFilmGenreReq(query));
-    }, [searchParams, dispatch]);
+    }, [dispatch]);
 
     return (
         <Wrapper>

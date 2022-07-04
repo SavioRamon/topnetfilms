@@ -19,8 +19,8 @@ const SearchByName = () => {
         const query = `query=${name}&page=${page}`;
 
         dispatch(searchByFilmNameReq(query));
-    }, [searchParams, dispatch]);
-
+    }, [dispatch]);
+    
     return (
         <Wrapper>
             {!loading && searchResults &&

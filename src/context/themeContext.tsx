@@ -35,11 +35,11 @@ export const ThemeContextProvider = ({children}: {children: JSX.Element}) => {
     useLayoutEffect(()=>{
         // Load the respective theme after changing darkThemeActived
 
-        if(darkThemeActived) setTheme({...theme, ...darkTheme});
-        else setTheme({...theme, ...lightTheme});
+        if(darkThemeActived) setTheme(old => ({...old, ...darkTheme}));
+        else setTheme(old => ({...old, ...lightTheme}));
     }, [darkThemeActived]);
 
-
+    
     useLayoutEffect(()=>{
         // checks for a predefined theme in localStorage
 
