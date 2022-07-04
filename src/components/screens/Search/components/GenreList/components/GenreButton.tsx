@@ -34,7 +34,7 @@ const Button = styled.button`
 const GenreButton = () => {
     const navigate = useNavigate();
 
-    const genreList = useAppSelector(state=>state.filmList.genreList)!;
+    const genreList = useAppSelector(state=>state.filmList.genreList);
 
     const navigateToGenreScreen = (id: number) => {
         navigate(`/${CONSTANTS.ROUTES.SEARCH_GENRE}?q=${id}`);
@@ -43,7 +43,7 @@ const GenreButton = () => {
 
     return (
         <Fragment>
-            {genreList.genres.map((genre, key)=>(
+            {genreList?.genres.map((genre, key)=>(
                 <Item key={key}>
                     <Button
                         onClick={()=>navigateToGenreScreen(genre.id)}
