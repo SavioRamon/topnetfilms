@@ -15,7 +15,7 @@ export default function SearchBar() {
         const inputValue = form.querySelector("input")?.value;
 
         if(inputValue) {
-            navigate(`/${CONSTANTS.ROUTES.SEARCH_NAME}/${inputValue}`);
+            navigate(`/${CONSTANTS.ROUTES.SEARCH_NAME}?q=${inputValue}`);
         }
     }
 

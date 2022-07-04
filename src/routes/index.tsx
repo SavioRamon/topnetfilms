@@ -22,8 +22,8 @@ export default function RouterComponent(){
 
                     <Route path="film" element={<Search />} />
                     <Route path="search" element={<Search />}>
-                        <Route path="genre/:query" element={<SearchByGenre />} />
-                        <Route path="name/:query" element={<SearchByName />} />
+                        <Route path="genre" element={<SearchByGenre />} />
+                        <Route path="name" element={<SearchByName />} />
                     </Route>
 
                     <Route path="film/:id" element={<Film />} />

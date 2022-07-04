@@ -37,13 +37,13 @@ export const tmdb = {
 
     getSearchResults: async (query: string) => {
         query = encodeURI(query);
-        const results: ApiResultListTypes | undefined = await basicFetch(`search/movie?query=${query}`);
+        const results: ApiResultListTypes | undefined = await basicFetch(`search/movie?${query}`);
         return results;
     },
 
-    getGenreResults: async (query: string) => {
+    getGenreResults: async (query: string) => { 
         query = encodeURI(query);
-        const results: ApiResultListTypes | undefined = await basicFetch(`discover/movie?with_genres=${query}`);
+        const results: ApiResultListTypes | undefined = await basicFetch(`discover/movie?${query}`);
         return results;
     },
 

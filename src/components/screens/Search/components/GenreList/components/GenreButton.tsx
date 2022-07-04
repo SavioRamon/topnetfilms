@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import styled, { css } from "styled-components";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { useAppSelector } from "../../../../../../store/hooks";
 import CONSTANTS from "../../../../../../utils/CONSTANTS";
 
@@ -29,25 +29,16 @@ const Button = styled.button`
     &:hover {
         border-left: .5em solid ${({theme})=>theme.blue};
     }
-
-    ${(props: {active: boolean})=>{
-        if(props.active) return css`
-            background-color: ${({theme})=>theme.blue};
-            color: ${({theme})=>theme.white};
-            border-left: .5em solid ${({theme})=>theme.blue};
-        `
-    }}
 `;
 
 const GenreButton = () => {
     const navigate = useNavigate();
+
     const genreList = useAppSelector(state=>state.filmList.genreList)!;
-    const { query } = useParams();
 
     const navigateToGenreScreen = (id: number) => {
-        navigate(`/${CONSTANTS.ROUTES.SEARCH_GENRE}/${id}`);
+        navigate(`/${CONSTANTS.ROUTES.SEARCH_GENRE}?q=${id}`);
     };
-
 
 
     return (
@@ -56,7 +47,6 @@ const GenreButton = () => {
                 <Item key={key}>
                     <Button
                         onClick={()=>navigateToGenreScreen(genre.id)}
-                        active={(parseInt(query!) === genre.id)}
                     >
                         {genre.name}
                     </Button>

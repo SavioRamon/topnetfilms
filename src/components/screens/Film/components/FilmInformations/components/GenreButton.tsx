@@ -35,7 +35,7 @@ export default function InputGenre({genre}: Props) {
     const navigate = useNavigate();
 
     const goToGenreScreen = () => {
-        navigate(`/${CONSTANTS.ROUTES.SEARCH_GENRE}/${genre.id}`);
+        navigate(`/${CONSTANTS.ROUTES.SEARCH_GENRE}?q=${genre.id}`);
     };
 
     return (
