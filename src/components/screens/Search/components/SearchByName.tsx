@@ -4,6 +4,7 @@ import { searchByFilmNameReq } from "../../../../store/ducks/filmList";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { Wrapper } from "../style";
 import FilmListResults from "./FilmListResults";
+import PageNavigation from "./PageNavigation";
 import TextTotalResults from "./TextTotalResults";
 
 
@@ -26,6 +27,7 @@ const SearchByName = () => {
             {!loading && searchResults &&
                 <Fragment>
                     <TextTotalResults total={searchResults.total_results} />
+                    <PageNavigation />
                     <FilmListResults />
                 </Fragment>
             }

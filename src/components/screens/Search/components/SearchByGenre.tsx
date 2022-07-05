@@ -4,6 +4,7 @@ import { searchByFilmGenreReq } from "../../../../store/ducks/filmList";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { Wrapper } from "../style";
 import FilmListResults from "./FilmListResults";
+import PageNavigation from "./PageNavigation";
 import TextTotalResults from "./TextTotalResults";
 
 
@@ -11,7 +12,7 @@ const SearchByGenre = () => {
     const [searchParams] = useSearchParams();
     const {searchResults, loading} = useAppSelector(state=>state.filmList);
     const dispatch = useAppDispatch();
-
+    
     useEffect(()=>{
         const genres = searchParams.get("q");
         const page = searchParams.get("page");
@@ -25,6 +26,7 @@ const SearchByGenre = () => {
             {!loading && searchResults &&
                 <Fragment>
                     <TextTotalResults total={searchResults.total_results} />
+                    <PageNavigation />
                     <FilmListResults />
                 </Fragment>
             }
