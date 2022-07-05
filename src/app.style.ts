@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
         color: ${({theme})=>theme.textColor};  
         font-family: "Roboto", "sans-serif";
     };
+
 `;
 
 
