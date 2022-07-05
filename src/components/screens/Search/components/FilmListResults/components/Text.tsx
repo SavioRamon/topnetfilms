@@ -4,6 +4,11 @@ import styled, { css } from "styled-components";
 const Text = styled.p`
     text-align: start;
     word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
     
     ${(props: {isTitle: boolean}) => {
         if(props.isTitle) return css`
@@ -18,11 +23,7 @@ const Text = styled.p`
     }};
 
     @media(max-width: 600px) {
-        display: -webkit-box;
-        text-overflow: ellipsis;
-        overflow: hidden;
         -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
     };
     
 `;
