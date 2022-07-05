@@ -6,7 +6,6 @@ import CONSTANTS from "../../../../../../utils/CONSTANTS";
 const Item = styled.li`
     margin: .3em;
     margin-left: 0;
-    background-color: ${({theme})=>theme.backgroundSecondary};
     font-size: calc(1rem + .4vw);
     border-radius: 1em;
 `;
@@ -14,12 +13,11 @@ const Item = styled.li`
 const Button = styled.button`
     padding: .4em;
     border: none;
-    background-color: ${(props)=>props.theme.blue};
+    border: .1em solid ${(props)=>props.theme.blue};
     font-size: inherit;
     font-weight: bold;
     border-radius: inherit;
     cursor: pointer;
-    color: ${({theme})=>theme.white};
 `;
 
 type Props = {
