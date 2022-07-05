@@ -5,7 +5,7 @@ import { useAppSelector } from "../../../../../store/hooks";
 import PageItemButton from "./components/PageItemButton";
 
 const List = styled.ul`
-    margin: calc(1rem + .8vw) 0;
+    margin: 0 0 calc(.5rem + .5vw) 0;
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;

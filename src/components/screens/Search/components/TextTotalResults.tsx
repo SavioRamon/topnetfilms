@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Text = styled.span`
-    margin: .5em;
+    margin: .6em;
     font-size: calc(1rem + 1vw);
 `;
 
