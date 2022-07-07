@@ -1,12 +1,18 @@
 import { Fragment } from "react";
 import styled, { css } from "styled-components";
 import { useAppSelector } from "../../../../../../store/hooks";
+import ButtonFavorite from "./ButtonFavorite";
 import { FilmImage } from "./FilmImage";
 import GenreButton from "./GenreButton";
 
 const Content = styled.div`
     padding: 0 calc(1rem + 1.5vw);
     flex: 1;
+    @media (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 const FilmTitle = styled.h2`
@@ -80,6 +86,8 @@ export function Informations() {
                 <Text overview>
                     {singleFilm.overview}
                 </Text>
+
+                <ButtonFavorite filmID={singleFilm.id} />
             </Fragment>
             }
             
