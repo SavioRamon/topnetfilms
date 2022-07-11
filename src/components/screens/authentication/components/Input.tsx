@@ -43,7 +43,6 @@ type InputProps = {
     type: string;
     placeholder: string;
     icon: JSX.Element;
-    setValue: (value: string)=>void
 };
 
 const Input = (props: InputProps) => {
@@ -58,7 +57,6 @@ const Input = (props: InputProps) => {
                     id={props.id}
                     type={props.type} 
                     placeholder={props.placeholder} 
-                    onChange={e => props.setValue(e.target.value)}
                 />
             </LabelArea>
         </InputContent>
