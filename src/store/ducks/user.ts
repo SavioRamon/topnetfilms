@@ -22,28 +22,18 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         // login
-        loginWithEmailAndPasswordReq: (state)=>{state.loading = true},
-        loginWithServiceReq: (state)=>{state.loading = true},
-        loginSuccess: (state, action: PayloadAction<AccountInfo>)=>({
+        authWithServiceReq: (state, action: PayloadAction<string>)=>{state.loading = true},
+        authWithServiceSuccess: (state, action: PayloadAction<AccountInfo>)=>({
             ...state,
             accountInfo: action.payload,
             loading: false
         }),
 
-        loginError: (state)=>{state.loading = false},
-
-
-        // register
-        RegisterWithEmailAndPasswordReq: (state)=>{state.loading = true},
-        RegisterWithServiceReq: (state)=>{state.loading = true},
-        
-        RegisterSuccess: (state, action: PayloadAction<AccountInfo>)=>({
+        authWithServiceError: (state)=>({
             ...state,
-            accountInfo: action.payload,
+            accountInfo: null,
             loading: false
         }),
-
-        RegisterError: (state)=>{state.loading = false},
 
 
         // auto login
@@ -54,18 +44,24 @@ const userSlice = createSlice({
             loading: false
         }),
 
-        autoLoginError: (state)=>{state.loading = false},
+        autoLoginError: (state)=>({
+            ...state,
+            accountInfo: null,
+            loading: false
+        }),
 
 
         // disconnect
         disconnectReq: (state)=>{state.loading = true},
-        disconnectSuccess: (state, action: PayloadAction<AccountInfo>)=>({
+        disconnectSuccess: (state)=>({
             ...state,
-            accountInfo: action.payload,
+            accountInfo: null,
             loading: false
         }),
 
-        disconnectError: (state)=>{state.loading = false},
+        disconnectError: (state)=>({
+            ...state, loading: false
+        }),
 
 
         // favorite list
@@ -81,15 +77,9 @@ const userSlice = createSlice({
 })
 
 export const {
-    loginWithEmailAndPasswordReq,
-    loginWithServiceReq,
-    loginSuccess,
-    loginError,
-
-    RegisterWithEmailAndPasswordReq,
-    RegisterWithServiceReq,
-    RegisterSuccess,
-    RegisterError,
+    authWithServiceReq,
+    authWithServiceSuccess,
+    authWithServiceError,
 
     autoLoginReq,
     autoLoginSuccess,

@@ -6,7 +6,6 @@ import {
     signInWithPopup,
     onAuthStateChanged,
     signOut,
-    User
 } from "firebase/auth";
 
 import firebaseConfig from "./firebaseConfig";
@@ -20,26 +19,33 @@ export const authenticationAPI = {
     async googleAuth() {
         const provider = new GoogleAuthProvider();
         try {
-            await signInWithPopup(auth, provider);
+            const account = await signInWithPopup(auth, provider);
+            return account.user;
         } catch (error: any) {
             alert(error.message);
+            return null;
         }
     },
 
-    autoLogin(callback: (user: User | null)=>void) {
-        onAuthStateChanged(auth, (user) => {
+    autoLogin() {
+        return new Promise((resolve)=>{
+            const unsubscribe = onAuthStateChanged(auth, (user) => {
+                if(user) resolve(user);
+                else resolve(null);
+            });
 
-            if(user) callback(user);
-            else callback(null);
-        });
+            unsubscribe();
+        })
+        
     },
 
     async disconnectUser() {
         try {
-            const result = await signOut(auth);
-            return result;
+            await signOut(auth);
+            return true;
         } catch (error: any) {
             alert(error.message);
+            return false;
         }
     }
 };

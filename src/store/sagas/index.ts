@@ -8,13 +8,10 @@ import {
 } from "../ducks/filmList";
 
 import {
-    loginWithEmailAndPasswordReq,
-    loginWithServiceReq,
-    RegisterWithEmailAndPasswordReq,
-    RegisterWithServiceReq,
-    autoLoginReq,
     disconnectReq,
-    favoriteListReq
+    favoriteListReq,
+    autoLoginReq,
+    authWithServiceReq
 } from "../ducks/user";
 
 import {
@@ -27,12 +24,9 @@ import {
 
 import {
     getFavoriteList,
+    tryAuthWithService,
     tryAutoLogin,
     tryDisconnect,
-    tryLoginWithEmailAndPassword,
-    tryLoginWithService,
-    tryRegisterWithEmailAndPassword,
-    tryRegisterWithService
 } from "./user";
 
 function* rootSaga() {
@@ -43,10 +37,7 @@ function* rootSaga() {
         takeLatest(searchByFilmGenreReq, getSearchByFilmGenre),
         takeLatest(genreListReq, getGenreList),
 
-        takeLatest(loginWithEmailAndPasswordReq, tryLoginWithEmailAndPassword),
-        takeLatest(loginWithServiceReq, tryLoginWithService),
-        takeLatest(RegisterWithEmailAndPasswordReq, tryRegisterWithEmailAndPassword),
-        takeLatest(RegisterWithServiceReq, tryRegisterWithService),
+        takeLatest(authWithServiceReq, tryAuthWithService),
         takeLatest(autoLoginReq, tryAutoLogin),
         takeLatest(disconnectReq, tryDisconnect),
         takeLatest(favoriteListReq, getFavoriteList)
