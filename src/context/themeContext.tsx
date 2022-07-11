@@ -8,7 +8,7 @@ export type Theme = ThemePropsTypes & ColorTypes;
 
 type ThemeContextType = {
     darkThemeActived: boolean;
-    toggleTheme: () => void;
+    setDarkTheme: (value: boolean) => void;
 };
 
 
@@ -25,11 +25,11 @@ export const ThemeContextProvider = ({children}: {children: JSX.Element}) => {
     const [darkThemeActived, setDarkThemeActived] = useState<boolean>(true);
 
     
-    function toggleTheme() {
+    function setDarkTheme(value: boolean) {
         // Toggle the value of darkThemeActived and set it value in localStorage
         
-        setDarkThemeActived(!darkThemeActived);
-        localStorage.setItem("darkThemeActived", JSON.stringify(!darkThemeActived));
+        setDarkThemeActived(value);
+        localStorage.setItem("darkThemeActived", JSON.stringify(value));
     }
 
     useLayoutEffect(()=>{
@@ -54,7 +54,7 @@ export const ThemeContextProvider = ({children}: {children: JSX.Element}) => {
     return (
         <ThemeContext.Provider value={{
             darkThemeActived,
-            toggleTheme
+            setDarkTheme
         }}>
             <ThemeProvider theme={theme}>
                 {children}
