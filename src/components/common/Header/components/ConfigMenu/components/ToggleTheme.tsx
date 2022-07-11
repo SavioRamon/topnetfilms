@@ -3,64 +3,71 @@ import { useTheme } from "../../../../../../hooks";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
 import styled, { css } from "styled-components";
-import ButtonContent from "./ButtonContent";
 
 
-const ToggleThemeContainer = styled.div`
-    padding: calc(.2rem + .1vw);
-    width: calc(3.2rem + 2vw);
-    background-color: rgba(100, 100, 100, 0.6);
-    border-radius: calc(1rem + 1vw);
+const Content = styled.div`
+    margin-right: .5em;
+    display: flex;
     font-size: 1em;
-    cursor: pointer;
 `;
 
 
-type ToggleThemeIconProps = {
-    darkThemeActived: boolean
+type ThemeButton = {
+    actived: boolean;
 }
 
-const ToggleThemeIcon = styled.div`
-    width: calc(1.6rem + 1vw);
-    height: calc(1.6rem + 1vw);
+const SunButton = styled.button`
+    padding: .1em;
+    margin-right: .3em;
+    font-size: 1.3em;
+    background-color: inherit;
+    border: .1em solid transparent;
+    display: flex;
+    align-items: center;
     border-radius: 50%;
-    font-size: calc(1.6rem + 1vw);
+    cursor: pointer;
 
-    ${(props: ToggleThemeIconProps) => {
-        if(props.darkThemeActived) return css`
-            float: right;
-            color: #fff;
+    ${(props: ThemeButton)=>{
+        if(props.actived) return css`
+            border-color: ${({theme})=>theme.blue};
         `;
-        else return css`
-            float: left;
-            color: yellow;
+    }}
+`;
+
+const MoonButton = styled.button`
+    padding: .1em;
+    font-size: 1.3em;
+    background-color: inherit;
+    border: .1em solid transparent;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    ${(props: ThemeButton)=>{
+        if(props.actived) return css`
+            border-color: ${({theme})=>theme.blue};
         `;
-    }};
+    }}
 `;
 
 export default function ToggleTheme() {
 
-    const { darkThemeActived, toggleTheme } = useTheme();
+    const { darkThemeActived, setDarkTheme } = useTheme();
 
-    function changeTheme() {
-        toggleTheme();
+    function changeTheme(value: boolean) {
+        setDarkTheme(value);
     }
 
     return (
-        <ButtonContent action={changeTheme}>
-            <ToggleThemeContainer>
-                <ToggleThemeIcon darkThemeActived={darkThemeActived}>
-                    
-                    {darkThemeActived ? 
-                        <BsFillMoonFill />
-                    :
-                        <BsFillSunFill />
-                    }
+        <Content>
+            <SunButton onClick={()=>changeTheme(false)} actived={darkThemeActived? false : true}>
+                <BsFillSunFill />
+            </SunButton>
 
-                </ToggleThemeIcon>
-                
-            </ToggleThemeContainer>
-        </ButtonContent>
-        
+            <MoonButton onClick={()=>changeTheme(true)} actived={darkThemeActived? true : false}>
+                <BsFillMoonFill />
+            </MoonButton>
+        </Content>
     );
 }
