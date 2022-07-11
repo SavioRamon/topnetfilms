@@ -4,16 +4,16 @@ import { Outlet } from "react-router-dom";
 import { Content, GlobalStyle, MainContent } from "./app.style";
 import Header from "./components/common/Header";
 import ScrollUpButton from "./components/common/ScrollUpButton";
-import { useAuthentication } from "./hooks";
+import { autoLoginReq } from "./store/ducks/user";
+import { useAppDispatch } from "./store/hooks";
 
 
 export default function App(){
-
-  const { authPersistence } = useAuthentication();
+  const dispatch = useAppDispatch();
 
   useLayoutEffect(()=>{
-    authPersistence();
-  }, [authPersistence]);
+    dispatch(autoLoginReq());
+  }, [dispatch]);
   
   return (
     <Content>

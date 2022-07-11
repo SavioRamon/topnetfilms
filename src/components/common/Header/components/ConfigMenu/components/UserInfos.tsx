@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useAuthentication } from "../../../../../../hooks";
+import { useAppSelector } from "../../../../../../store/hooks";
 
 import { UserImage } from "../style";
 
@@ -19,15 +19,15 @@ const Text = styled.div`
 
 const UserInfos = ():JSX.Element => {
 
-    const { userData, loading } = useAuthentication();
+    const { accountInfo, loading } = useAppSelector(state=>state.user);
 
     const returnImage = () => {
-        if(!loading) return userData?.photoURL? userData.photoURL : "";
+        if(!loading) return accountInfo?.photoURL? accountInfo.photoURL : "";
     };
 
     return (
         <Content>
-            <Text>{userData?.displayName}</Text>
+            <Text>{accountInfo?.displayName}</Text>
             {!loading }
             <UserImage src={returnImage()} alt="your user image"/>
         </Content>

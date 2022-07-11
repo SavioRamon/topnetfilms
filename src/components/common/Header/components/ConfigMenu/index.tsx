@@ -1,13 +1,13 @@
 import { Fragment, useState } from "react";
-import { useAuthentication } from "../../../../../hooks";
 import { Container, HiddenScreen, UserImage } from "./style";
 
 import images from "../../../../../assets/images";
 import OpenConfig from "./components/OpenConfig";
 import ButtonContent from "./components/ButtonContent";
+import { useAppSelector } from "../../../../../store/hooks";
 
 const ConfigBox = (): JSX.Element => {
-    const { userData, loading } = useAuthentication();
+    const { accountInfo, loading } = useAppSelector(state=>state.user);
     const [openConfig, setOpenConfig] = useState(false);
 
     const changeConfigDisplay = () => {
@@ -17,7 +17,11 @@ const ConfigBox = (): JSX.Element => {
     };
 
     const returnImage = () => {
-        if(!loading) return userData?.photoURL? userData.photoURL : images.userDefault;
+        if(!loading && accountInfo?.photoURL) {
+            return accountInfo.photoURL;
+        } else {
+            return  images.userDefault;
+        }
     };
     
     return (

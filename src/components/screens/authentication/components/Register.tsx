@@ -1,4 +1,3 @@
-import { useAuthentication } from "../../../../hooks";
 import {
     ScreenAuth,
     ContentWrapper,
@@ -15,18 +14,23 @@ import BottomContent from "./BottomContent";
 import { RiUserFill, RiMailFill, RiLockPasswordFill } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useAppSelector } from "../../../../store/hooks";
 
 
 export default function Register() {
 
     const navigate = useNavigate();
-    const { userData, setName, setEmail, setPassword } = useAuthentication();
+    const { accountInfo } = useAppSelector((state)=>state.user);
+
+    const navigateToHomeScreen = () => {
+        navigate("/", {replace: true})
+    }
 
     useEffect(()=>{
-        if(userData) {
-            navigate("/", {replace: true});
+        if(accountInfo) {
+            navigateToHomeScreen();
         }
-    }, [userData, navigate]);
+    }, [accountInfo, navigate]);
 
     return (
         <ScreenAuth>
@@ -41,14 +45,12 @@ export default function Register() {
                         type="text"
                         placeholder="Username"
                         icon={<RiUserFill />}
-                        setValue={setName}
                     />
                     <Input 
                         id="email"
                         type="email" 
                         placeholder="Email"
                         icon={<RiMailFill />}
-                        setValue={setEmail}
                     />
 
                     <Input 
@@ -56,7 +58,6 @@ export default function Register() {
                         type="password"
                         placeholder="Password"
                         icon={<RiLockPasswordFill />}
-                        setValue={setPassword}
                     />
 
                     <TextForm>
@@ -66,7 +67,7 @@ export default function Register() {
                         </Link>
                     </TextForm>
 
-                    <ButtonForm>REGISTER</ButtonForm>
+                    <ButtonForm onClick={navigateToHomeScreen}>REGISTER</ButtonForm>
 
                     <BottomContent />
                 </FormAuthentication>

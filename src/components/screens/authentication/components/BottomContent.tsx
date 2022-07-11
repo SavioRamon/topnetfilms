@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import googleIcon from "../../../../assets/images/icons/googleIcon.svg";
-import { useAuthentication } from "../../../../hooks";
+import { authWithServiceReq } from "../../../../store/ducks/user";
+import { useAppDispatch } from "../../../../store/hooks";
 import metrics from "../../../../styles/metrics";
 import CONSTANTS from "../../../../utils/CONSTANTS";
 
@@ -41,11 +42,11 @@ const ListItemImage = styled.img`
 
 export default function BottomContent() {
 
-    const { authWithService } = useAuthentication();
+    const dispatch = useAppDispatch();
 
 
     const handleService = (service: string) => {
-        authWithService(service);
+        dispatch(authWithServiceReq(service));
     };
 
 

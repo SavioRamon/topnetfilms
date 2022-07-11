@@ -1,15 +1,15 @@
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useAuthentication } from "../../../../../../hooks";
 import metrics from "../../../../../../styles/metrics";
 
 import { BiLogOut, BiLogIn, BiUser } from "react-icons/bi";
 import CONSTANTS from "../../../../../../utils/CONSTANTS";
+import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
+import { disconnectReq } from "../../../../../../store/ducks/user";
 
 
 const Content = styled.div`
-    margin-top: ${metrics.extraSmallSpacingSize};
     padding: ${metrics.extraSmallSpacingSize} 0;
     width: 100%;
     border-top: .1vw solid rgba(100, 100, 100, 0.3);
@@ -39,12 +39,13 @@ type Props = {
 
 
 const BottomConfig = ({changeConfigDisplay}: Props):JSX.Element => {
-    const { userData, disconnect } = useAuthentication();
+    const accountInfo = useAppSelector(state=>state.user.accountInfo);
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const disconnecting = () => {
         changeConfigDisplay();
-        disconnect();
+        dispatch(disconnectReq());
     };
 
     const redirect = (screen: string) => {
@@ -54,7 +55,7 @@ const BottomConfig = ({changeConfigDisplay}: Props):JSX.Element => {
 
     return (
         <Content>
-            {userData?
+            {accountInfo?
                 <AuthButton onClick={disconnecting}>
                     <BiLogOut /> Log Out
                 </AuthButton>

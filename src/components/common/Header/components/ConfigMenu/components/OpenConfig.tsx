@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import styled from "styled-components";
 import { useAuthentication } from "../../../../../../hooks";
+import { useAppSelector } from "../../../../../../store/hooks";
 import BottomConfig from "./BottomConfig";
 import ToggleTheme from "./ToggleTheme";
 import UserInfos from "./UserInfos";
@@ -41,9 +42,8 @@ type Props = {
 
 const OpenConfig = ({changeConfigDisplay}: Props): JSX.Element => {
 
-    const { userData } = useAuthentication();
+    const accountInfo = useAppSelector(state=>state.user.accountInfo);
     const parentRef = useRef(null);
-
     window.onkeydown = (e) => {
 
         // detect if the clicked element is a child of this component
@@ -65,7 +65,7 @@ const OpenConfig = ({changeConfigDisplay}: Props): JSX.Element => {
 
     return (
         <Content ref={parentRef}>
-            {userData &&
+            {accountInfo &&
                 <UserInfos />
             }
 
