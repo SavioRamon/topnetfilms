@@ -4,7 +4,7 @@ import { searchByFilmNameReq } from "../../../../store/ducks/filmList";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { Wrapper } from "../style";
 import FilmListResults from "./FilmListResults";
-import PageNavigation from "./PageNavigation";
+import PageNavigation from "../../../common/PageNavigation";
 import TextTotalResults from "./TextTotalResults";
 
 
@@ -27,7 +27,11 @@ const SearchByName = () => {
             {!loading && searchResults &&
                 <Fragment>
                     <TextTotalResults total={searchResults.total_results} />
-                    <PageNavigation />
+                    {searchResults && searchResults.total_pages > 1 &&
+                        <PageNavigation 
+                            totalPages={searchResults.total_pages > 500? 500 : searchResults.total_pages}
+                        />
+                    }
                     <FilmListResults />
                 </Fragment>
             }
