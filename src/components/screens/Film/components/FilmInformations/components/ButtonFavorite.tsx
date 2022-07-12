@@ -2,7 +2,9 @@ import styled, { css } from "styled-components";
 
 import { MdOutlineFavoriteBorder, MdOutlineFavorite} from "react-icons/md";
 import { useLayoutEffect, useState } from "react";
-import { useAppSelector } from "../../../../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
+import { addFavoriteFilmReq } from "../../../../../../store/ducks/user";
+import { FilmTypes } from "../../../../../../store/ducks/filmList";
 
 
 const Button = styled.button`
@@ -46,11 +48,38 @@ type Props = {
 }
 
 const ButtonFavorite = ({ filmID }: Props) => {
-    const [isFavorite, setIsFavorite] = useState<boolean>(false);
-    const favoriteList = (useAppSelector((state) => state.user.favoriteList));
+    const [isFavorite, setIsFavorite] = useState<boolean | undefined>();
+
+    const { favoriteList, accountInfo } = (useAppSelector((state) => state.user));
+    const film = useAppSelector((state) => state.filmList.singleFilm) as FilmTypes;
+    const dispatch = useAppDispatch();
+
+
+    const addFavoriteFilmToDb = (uid: string) => {
+        const data = {
+            userID: uid,
+            film
+        }
+        dispatch(addFavoriteFilmReq(data));
+    }
+
+    const changeFavorite = () => {
+        if(accountInfo) {
+            if(!isFavorite === true) {
+                addFavoriteFilmToDb(accountInfo.uid);
+            }
+        }
+        else {
+            alert("não possui conta");
+        }
+
+        setIsFavorite(!isFavorite);
+    };
+
+
 
     useLayoutEffect(()=>{
-        if(favoriteList) {
+        if(accountInfo && favoriteList) {
             for(const filmFavorite of favoriteList) {
                 if(filmFavorite.id === filmID) {
                     setIsFavorite(true);
@@ -61,8 +90,8 @@ const ButtonFavorite = ({ filmID }: Props) => {
     }, [favoriteList]);
 
     return (
-        <Button onClick={()=>setIsFavorite(!isFavorite)}>
-            <IconWrapper favorite={isFavorite}>
+        <Button onClick={changeFavorite}>
+            <IconWrapper favorite={isFavorite? true : false}>
                 {isFavorite?
                     <MdOutlineFavorite />
                     :
