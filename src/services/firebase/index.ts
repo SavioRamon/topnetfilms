@@ -11,7 +11,8 @@ import {
     setDoc,
     doc,
     getFirestore,
-    arrayUnion
+    arrayUnion,
+    arrayRemove
 } from "firebase/firestore";
 
 import { AddOrRemoveFavoriteFilm } from "../../store/ducks/user";
@@ -65,4 +66,10 @@ export const database = {
             favoriteFilms: arrayUnion(data.film)
         }, { merge: true });
     },
+
+    async removeFavoriteFilm(data: AddOrRemoveFavoriteFilm) {
+        await setDoc(doc(db, "users", data.userID), {
+            favoriteFilms: arrayRemove(data.film)
+        }, { merge: true });
+    }
 };

@@ -94,7 +94,9 @@ const userSlice = createSlice({
 
         
         // Remove favorite
-        removeFavoriteFilmReq: (state) => {state.loading = true },
+        removeFavoriteFilmReq: (state, payload: PayloadAction<AddOrRemoveFavoriteFilm>) => {
+            state.loading = true
+        },
         removeFavoriteFilmSuccess: (state) => ({
             ...state,
             loading: false,

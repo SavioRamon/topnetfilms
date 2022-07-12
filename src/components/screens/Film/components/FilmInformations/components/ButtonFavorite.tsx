@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { MdOutlineFavoriteBorder, MdOutlineFavorite} from "react-icons/md";
 import { useLayoutEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
-import { addFavoriteFilmReq } from "../../../../../../store/ducks/user";
+import { addFavoriteFilmReq, removeFavoriteFilmReq } from "../../../../../../store/ducks/user";
 import { FilmTypes } from "../../../../../../store/ducks/filmList";
 
 
@@ -63,10 +63,21 @@ const ButtonFavorite = ({ filmID }: Props) => {
         dispatch(addFavoriteFilmReq(data));
     }
 
+    const removeFavoriteFilmFromDb = (uid: string) => {
+        const data = {
+            userID: uid,
+            film
+        }
+        dispatch(removeFavoriteFilmReq(data));
+    }
+
+
     const changeFavorite = () => {
         if(accountInfo) {
             if(!isFavorite === true) {
                 addFavoriteFilmToDb(accountInfo.uid);
+            } else {
+                removeFavoriteFilmFromDb(accountInfo.uid);
             }
         }
         else {

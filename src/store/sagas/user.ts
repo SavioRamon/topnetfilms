@@ -41,17 +41,16 @@ export function* getFavoriteList() {
     yield console.log("favorite list")
 }
 
-type AddFilmAction = {
+type FilmActionAddOrRemove = {
     type: string;
     payload: AddOrRemoveFavoriteFilm
 }
 
-export function* addFavoriteFilm(action: AddFilmAction) {
+export function* addFavoriteFilm(action: FilmActionAddOrRemove) {
     yield call(database.addFavoriteFilm, action.payload);
 }
 
 
-export function* removeFavoriteFilm() {
-
-    yield console.log("favorite list")
+export function* removeFavoriteFilm(action: FilmActionAddOrRemove) {
+    yield call(database.removeFavoriteFilm, action.payload);
 }
