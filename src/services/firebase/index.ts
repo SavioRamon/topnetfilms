@@ -7,12 +7,21 @@ import {
     onAuthStateChanged,
     signOut,
 } from "firebase/auth";
+import {
+    setDoc,
+    doc,
+    getFirestore,
+    arrayUnion
+} from "firebase/firestore";
+
+import { AddOrRemoveFavoriteFilm } from "../../store/ducks/user";
 
 import firebaseConfig from "./firebaseConfig";
 
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const db = getFirestore(app);
 
 export const authenticationAPI = {
 
@@ -48,4 +57,12 @@ export const authenticationAPI = {
             return false;
         }
     }
+};
+
+export const database = {
+    async addFavoriteFilm(data: AddOrRemoveFavoriteFilm) {
+        await setDoc(doc(db, "users", data.userID), {
+            favoriteFilms: arrayUnion(data.film)
+        }, { merge: true });
+    },
 };

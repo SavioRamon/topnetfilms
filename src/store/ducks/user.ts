@@ -11,6 +11,11 @@ type UserState = {
     loading: boolean;
 }
 
+export type AddOrRemoveFavoriteFilm = {
+    userID: string;
+    film: FilmTypes;
+};
+
 const initialState: UserState = {
     accountInfo: null,
     favoriteList: null,
@@ -64,15 +69,40 @@ const userSlice = createSlice({
         }),
 
 
-        // favorite list
-        favoriteListReq: (state)=>{state.loading = true},
-        favoriteListSuccess: (state, action: PayloadAction<FavoriteList>)=>({
+        // Get favorite list
+        getFavoriteListReq: (state)=>{state.loading = true},
+        getFavoriteListSuccess: (state, action: PayloadAction<FavoriteList>)=>({
             ...state,
             favoriteList: action.payload,
             loading: false
         }),
+        getFavoriteListError: (state)=>{state.loading = false},
 
-        favoriteListError: (state)=>{state.loading = false}
+
+        // Add favorite
+        addFavoriteFilmReq: (state, payload: PayloadAction<AddOrRemoveFavoriteFilm>) => {
+            state.loading = true
+        },
+        addFavoriteFilmSuccess: (state) => ({
+            ...state,
+            loading: false,
+        }),
+        addFavoriteFilmError: (state) => ({
+            ...state,
+            loading: false,
+        }),
+
+        
+        // Remove favorite
+        removeFavoriteFilmReq: (state) => {state.loading = true },
+        removeFavoriteFilmSuccess: (state) => ({
+            ...state,
+            loading: false,
+        }),
+        removeFavoriteFilmError: (state) => ({
+            ...state,
+            loading: false
+        }),
     }
 })
 
@@ -89,9 +119,17 @@ export const {
     disconnectSuccess,
     disconnectError,
 
-    favoriteListReq,
-    favoriteListSuccess,
-    favoriteListError,
+    getFavoriteListReq,
+    getFavoriteListSuccess,
+    getFavoriteListError,
+
+    addFavoriteFilmReq,
+    addFavoriteFilmSuccess,
+    addFavoriteFilmError,
+
+    removeFavoriteFilmReq,
+    removeFavoriteFilmSuccess,
+    removeFavoriteFilmError
 
 } = userSlice.actions;
 

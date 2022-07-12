@@ -9,9 +9,11 @@ import {
 
 import {
     disconnectReq,
-    favoriteListReq,
+    getFavoriteListReq,
     autoLoginReq,
-    authWithServiceReq
+    authWithServiceReq,
+    addFavoriteFilmReq,
+    removeFavoriteFilmReq
 } from "../ducks/user";
 
 import {
@@ -23,7 +25,9 @@ import {
 } from "./filmList";
 
 import {
+    addFavoriteFilm,
     getFavoriteList,
+    removeFavoriteFilm,
     tryAuthWithService,
     tryAutoLogin,
     tryDisconnect,
@@ -40,7 +44,10 @@ function* rootSaga() {
         takeLatest(authWithServiceReq, tryAuthWithService),
         takeLatest(autoLoginReq, tryAutoLogin),
         takeLatest(disconnectReq, tryDisconnect),
-        takeLatest(favoriteListReq, getFavoriteList)
+
+        takeLatest(getFavoriteListReq, getFavoriteList),
+        takeLatest(addFavoriteFilmReq, addFavoriteFilm),
+        takeLatest(removeFavoriteFilmReq, removeFavoriteFilm)
     ]);
 }
 
