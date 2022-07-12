@@ -3,7 +3,7 @@ import { User } from "firebase/auth";
 import { FilmTypes } from "./filmList";
 
 type AccountInfo = User;
-type FavoriteList = Array<FilmTypes>
+export type FavoriteList = Array<FilmTypes>
 
 type UserState = {
     accountInfo: AccountInfo | null;
@@ -70,13 +70,16 @@ const userSlice = createSlice({
 
 
         // Get favorite list
-        getFavoriteListReq: (state)=>{state.loading = true},
+        getFavoriteListReq: (state, action: PayloadAction<string>)=>{state.loading = true},
         getFavoriteListSuccess: (state, action: PayloadAction<FavoriteList>)=>({
             ...state,
             favoriteList: action.payload,
             loading: false
         }),
-        getFavoriteListError: (state)=>{state.loading = false},
+        getFavoriteListError: (state)=>({
+            ...state,
+            loading: false
+        }),
 
 
         // Add favorite
@@ -92,7 +95,7 @@ const userSlice = createSlice({
             loading: false,
         }),
 
-        
+
         // Remove favorite
         removeFavoriteFilmReq: (state, payload: PayloadAction<AddOrRemoveFavoriteFilm>) => {
             state.loading = true

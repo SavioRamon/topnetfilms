@@ -1,8 +1,20 @@
 
+import { PayloadAction } from "@reduxjs/toolkit";
 import { User } from "firebase/auth";
 import { call, put } from "redux-saga/effects";
 import { authenticationAPI, database } from "../../services/firebase";
-import { AddOrRemoveFavoriteFilm, authWithServiceError, authWithServiceSuccess, autoLoginError, autoLoginSuccess, disconnectError, disconnectSuccess } from "../ducks/user";
+import {
+    AddOrRemoveFavoriteFilm,
+    authWithServiceError,
+    authWithServiceSuccess,
+    autoLoginError,
+    autoLoginSuccess,
+    disconnectError,
+    disconnectSuccess,
+    FavoriteList,
+    getFavoriteListError,
+    getFavoriteListSuccess
+} from "../ducks/user";
 
 
 export function* tryAuthWithService(action: {type: string; payload: string}) {
@@ -37,8 +49,13 @@ export function* tryDisconnect() {
 }
 
 
-export function* getFavoriteList() {
-    yield console.log("favorite list")
+export function* getFavoriteList(action: PayloadAction<string>) {
+    const favoriteList: FavoriteList | undefined = yield call(
+        database.getFavoriteList, action.payload
+    );
+
+    if(favoriteList) yield put(getFavoriteListSuccess(favoriteList));
+    else yield put(getFavoriteListError());
 }
 
 type FilmActionAddOrRemove = {

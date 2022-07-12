@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { MdOutlineFavoriteBorder, MdOutlineFavorite} from "react-icons/md";
 import { useLayoutEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
-import { addFavoriteFilmReq, removeFavoriteFilmReq } from "../../../../../../store/ducks/user";
+import { addFavoriteFilmReq, getFavoriteListReq, removeFavoriteFilmReq } from "../../../../../../store/ducks/user";
 import { FilmTypes } from "../../../../../../store/ducks/filmList";
 
 
@@ -50,7 +50,7 @@ type Props = {
 const ButtonFavorite = ({ filmID }: Props) => {
     const [isFavorite, setIsFavorite] = useState<boolean | undefined>();
 
-    const { favoriteList, accountInfo } = (useAppSelector((state) => state.user));
+    const { favoriteList, accountInfo, loading } = (useAppSelector((state) => state.user));
     const film = useAppSelector((state) => state.filmList.singleFilm) as FilmTypes;
     const dispatch = useAppDispatch();
 
@@ -88,6 +88,11 @@ const ButtonFavorite = ({ filmID }: Props) => {
     };
 
 
+    useLayoutEffect(()=>{
+        if(!favoriteList && accountInfo) {
+            dispatch(getFavoriteListReq(accountInfo.uid));
+        }
+    }, [favoriteList, dispatch, accountInfo]);
 
     useLayoutEffect(()=>{
         if(accountInfo && favoriteList) {
@@ -101,16 +106,21 @@ const ButtonFavorite = ({ filmID }: Props) => {
     }, [favoriteList]);
 
     return (
-        <Button onClick={changeFavorite}>
-            <IconWrapper favorite={isFavorite? true : false}>
-                {isFavorite?
-                    <MdOutlineFavorite />
-                    :
-                    <MdOutlineFavoriteBorder />
-                }
-            </IconWrapper>
-            <Text>{isFavorite? "Unfavorite" : "Favorite"}</Text>
-        </Button>
+        <>
+        {!loading &&
+            <Button onClick={changeFavorite}>
+                <IconWrapper favorite={isFavorite? true : false}>
+                    {isFavorite?
+                        <MdOutlineFavorite />
+                        :
+                        <MdOutlineFavoriteBorder />
+                    }
+                </IconWrapper>
+                <Text>{isFavorite? "Unfavorite" : "Favorite"}</Text>
+            </Button>
+        }
+        </>
+        
     );
 }
 
