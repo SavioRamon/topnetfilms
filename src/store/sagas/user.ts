@@ -4,6 +4,7 @@ import { User } from "firebase/auth";
 import { call, put } from "redux-saga/effects";
 import { authenticationAPI, database } from "../../services/firebase";
 import {
+    addFavoriteFilmSuccess,
     AddOrRemoveFavoriteFilm,
     authWithServiceError,
     authWithServiceSuccess,
@@ -13,7 +14,8 @@ import {
     disconnectSuccess,
     FavoriteList,
     getFavoriteListError,
-    getFavoriteListSuccess
+    getFavoriteListSuccess,
+    removeFavoriteFilmSuccess
 } from "../ducks/user";
 
 
@@ -53,7 +55,7 @@ export function* getFavoriteList(action: PayloadAction<string>) {
     const favoriteList: FavoriteList | undefined = yield call(
         database.getFavoriteList, action.payload
     );
-
+    
     if(favoriteList) yield put(getFavoriteListSuccess(favoriteList));
     else yield put(getFavoriteListError());
 }
@@ -65,9 +67,13 @@ type FilmActionAddOrRemove = {
 
 export function* addFavoriteFilm(action: FilmActionAddOrRemove) {
     yield call(database.addFavoriteFilm, action.payload);
+
+    yield put(addFavoriteFilmSuccess(action.payload.film));
 }
 
 
 export function* removeFavoriteFilm(action: FilmActionAddOrRemove) {
     yield call(database.removeFavoriteFilm, action.payload);
+
+    yield put(removeFavoriteFilmSuccess(action.payload.film));
 }

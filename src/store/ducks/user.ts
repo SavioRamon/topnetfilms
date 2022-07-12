@@ -83,31 +83,21 @@ const userSlice = createSlice({
 
 
         // Add favorite
-        addFavoriteFilmReq: (state, payload: PayloadAction<AddOrRemoveFavoriteFilm>) => {
-            state.loading = true
+        addFavoriteFilmReq: (state, action: PayloadAction<AddOrRemoveFavoriteFilm>) => ({
+            ...state
+        }),
+        addFavoriteFilmSuccess: (state, action: PayloadAction<FilmTypes>) => {
+            state.favoriteList?.push(action.payload)
         },
-        addFavoriteFilmSuccess: (state) => ({
-            ...state,
-            loading: false,
-        }),
-        addFavoriteFilmError: (state) => ({
-            ...state,
-            loading: false,
-        }),
 
 
         // Remove favorite
-        removeFavoriteFilmReq: (state, payload: PayloadAction<AddOrRemoveFavoriteFilm>) => {
-            state.loading = true
-        },
-        removeFavoriteFilmSuccess: (state) => ({
-            ...state,
-            loading: false,
+        removeFavoriteFilmReq: (state, action: PayloadAction<AddOrRemoveFavoriteFilm>) => ({
+            ...state
         }),
-        removeFavoriteFilmError: (state) => ({
-            ...state,
-            loading: false
-        }),
+        removeFavoriteFilmSuccess: (state, action: PayloadAction<FilmTypes>) => {
+            state.favoriteList?.filter((film) => film != action.payload)
+        }
     }
 })
 
@@ -130,11 +120,9 @@ export const {
 
     addFavoriteFilmReq,
     addFavoriteFilmSuccess,
-    addFavoriteFilmError,
 
     removeFavoriteFilmReq,
     removeFavoriteFilmSuccess,
-    removeFavoriteFilmError
 
 } = userSlice.actions;
 
