@@ -58,7 +58,7 @@ const OverviewTitle = styled.h3`
 
 export function Informations() {
 
-    const singleFilm = useAppSelector(state=>state.filmList.singleFilm);
+    const singleFilm = useAppSelector((state)=>state.filmList.singleFilm);
 
     return (
         <Content>

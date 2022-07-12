@@ -36,7 +36,7 @@ type Props = {
 
 export function FilmImage({smallScreens}: Props) {
 
-    const singleFilm = useAppSelector(state=>state.filmList.singleFilm);
+    const singleFilm = useAppSelector((state)=>state.filmList.singleFilm);
 
     const ImageComponent = smallScreens? SmallImage : LargeImage;
 
