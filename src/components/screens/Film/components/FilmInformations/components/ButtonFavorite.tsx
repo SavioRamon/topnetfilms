@@ -81,10 +81,10 @@ const ButtonFavorite = ({ filmID }: Props) => {
             }
         }
         else {
-            alert("não possui conta");
+            alert("you must be logged");
         }
 
-        setIsFavorite(!isFavorite);
+        accountInfo && setIsFavorite(!isFavorite);
     };
 
 
