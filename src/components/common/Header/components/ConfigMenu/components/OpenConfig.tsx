@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import styled from "styled-components";
-import { useAuthentication } from "../../../../../../hooks";
 import { useAppSelector } from "../../../../../../store/hooks";
 import BottomConfig from "./BottomConfig";
 import ToggleTheme from "./ToggleTheme";
