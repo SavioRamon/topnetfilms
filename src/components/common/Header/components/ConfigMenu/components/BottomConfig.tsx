@@ -1,35 +1,18 @@
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import metrics from "../../../../../../styles/metrics";
 
 import { BiLogOut, BiLogIn, BiUser } from "react-icons/bi";
 import CONSTANTS from "../../../../../../utils/CONSTANTS";
 import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
 import { disconnectReq } from "../../../../../../store/ducks/user";
+import ButtonContent from "./ButtonContent";
 
 
 const Content = styled.div`
-    padding: ${metrics.extraSmallSpacingSize} 0;
+    font-size: .9em;
     width: 100%;
     border-top: .1vw solid rgba(100, 100, 100, 0.3);
-`;
-
-const AuthButton = styled.button`
-    padding: .5em 0 .5em 1em;
-    width: 100%;
-    font-size: 1em;
-    text-indent: .6em;
-    border: none;
-    cursor: pointer;
-    color: ${({theme})=>theme.textColor};
-    background-color: inherit;
-    display: flex;
-    align-items: center;
-
-    &:hover {
-        background-color: rgba(140, 140, 140, 0.2);
-    }
 `;
 
 
@@ -56,20 +39,29 @@ const BottomConfig = ({changeConfigDisplay}: Props):JSX.Element => {
     return (
         <Content>
             {accountInfo?
-                <AuthButton onClick={disconnecting}>
-                    <BiLogOut /> Log Out
-                </AuthButton>
+                <ButtonContent
+                    icon={<BiLogOut />}
+                    action={disconnecting}
+                >
+                    Log Out
+                </ButtonContent>
 
                 :
 
                 <Fragment>
-                    <AuthButton onClick={()=>redirect(CONSTANTS.ROUTES.LOGIN)}>
-                        <BiLogIn /> Login
-                    </AuthButton>
+                    <ButtonContent 
+                        icon={<BiLogIn />}
+                        action={()=>redirect(CONSTANTS.ROUTES.LOGIN)}
+                    >
+                        Login
+                    </ButtonContent>
 
-                    <AuthButton onClick={()=>redirect(CONSTANTS.ROUTES.REGISTER)}>
-                        <BiUser /> Sign Up
-                    </AuthButton>
+                    <ButtonContent
+                        icon={<BiUser />}
+                        action={()=>redirect(CONSTANTS.ROUTES.REGISTER)}
+                    >
+                        Sign Up
+                    </ButtonContent>
                 </Fragment>
             }
             

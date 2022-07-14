@@ -2,56 +2,19 @@ import { useTheme } from "../../../../../../hooks";
 
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import ButtonContent from "./ButtonContent";
 
 
 const Content = styled.div`
-    margin-right: .5em;
-    display: flex;
-    font-size: 1em;
+    width: 100%;
 `;
 
-
-type ThemeButton = {
-    actived: boolean;
+type Props = {
+    children: string;
 }
 
-const SunButton = styled.button`
-    padding: .1em;
-    margin-right: .3em;
-    font-size: 1.3em;
-    background-color: inherit;
-    border: .1em solid transparent;
-    display: flex;
-    align-items: center;
-    border-radius: 50%;
-    cursor: pointer;
-
-    ${(props: ThemeButton)=>{
-        if(props.actived) return css`
-            border-color: ${({theme})=>theme.blue};
-        `;
-    }}
-`;
-
-const MoonButton = styled.button`
-    padding: .1em;
-    font-size: 1.3em;
-    background-color: inherit;
-    border: .1em solid transparent;
-    display: flex;
-    align-items: center;
-    border-radius: 50%;
-    cursor: pointer;
-
-    ${(props: ThemeButton)=>{
-        if(props.actived) return css`
-            border-color: ${({theme})=>theme.blue};
-        `;
-    }}
-`;
-
-export default function ToggleTheme() {
+export default function ToggleTheme(props: Props) {
 
     const { darkThemeActived, setDarkTheme } = useTheme();
 
@@ -61,13 +24,12 @@ export default function ToggleTheme() {
 
     return (
         <Content>
-            <SunButton onClick={()=>changeTheme(false)} actived={darkThemeActived? false : true}>
-                <BsFillSunFill />
-            </SunButton>
-
-            <MoonButton onClick={()=>changeTheme(true)} actived={darkThemeActived? true : false}>
-                <BsFillMoonFill />
-            </MoonButton>
+            <ButtonContent
+                icon={darkThemeActived? <BsFillMoonFill /> : <BsFillSunFill />}
+                action={()=>changeTheme(!darkThemeActived)}
+            >
+                {props.children}
+            </ButtonContent>
         </Content>
     );
 }

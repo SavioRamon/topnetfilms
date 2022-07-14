@@ -1,9 +1,13 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAppSelector } from "../../../../../../store/hooks";
+import CONSTANTS from "../../../../../../utils/CONSTANTS";
 import BottomConfig from "./BottomConfig";
+import ButtonContent from "./ButtonContent";
 import ToggleTheme from "./ToggleTheme";
 import UserInfos from "./UserInfos";
+import { CgProfile } from "react-icons/cg";
 
 
 const Content = styled.div`
@@ -24,23 +28,13 @@ const Content = styled.div`
     }
 `;
 
-const ContentWrapper = styled.div`
-    padding: .5em;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &:hover {
-        background-color: rgba(70, 70, 70, .3);
-    }
-`;
-
 type Props = {
     changeConfigDisplay: () => void;
 }
 
 const OpenConfig = ({changeConfigDisplay}: Props): JSX.Element => {
 
+    const navigate = useNavigate();
     const accountInfo = useAppSelector(state=>state.user.accountInfo);
     const parentRef = useRef(null);
     window.onkeydown = (e) => {
@@ -61,17 +55,29 @@ const OpenConfig = ({changeConfigDisplay}: Props): JSX.Element => {
         }
     };
 
+    const navigateToProfileScreen = () => {
+        navigate(CONSTANTS.ROUTES.PROFILE);
+    }
+
 
     return (
         <Content ref={parentRef}>
             {accountInfo &&
-                <UserInfos />
+                <> 
+                    <UserInfos />
+                    
+                    <ButtonContent
+                        icon={<CgProfile />}
+                        action={navigateToProfileScreen}
+                    >
+                            Profile
+                    </ButtonContent>
+                </>
             }
 
-            <ContentWrapper>
+            <ToggleTheme>
                 Theme
-                <ToggleTheme />
-            </ContentWrapper>
+            </ToggleTheme>
 
             <BottomConfig changeConfigDisplay={changeConfigDisplay} />
         </Content>
