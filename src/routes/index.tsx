@@ -8,6 +8,7 @@ import Film from "../components/screens/Film";
 import Search from "../components/screens/Search";
 import SearchByName from "../components/screens/Search/components/SearchByName";
 import SearchByGenre from "../components/screens/Search/components/SearchByGenre";
+import Profile from "../components/screens/Profile";
 
 
 export default function RouterComponent(){
@@ -25,8 +26,8 @@ export default function RouterComponent(){
                         <Route path="genre" element={<SearchByGenre />} />
                         <Route path="name" element={<SearchByName />} />
                     </Route>
-
                     <Route path="film/:id" element={<Film />} />
+                    <Route path="profile" element={<Profile />} />
                 </Route>
             </Routes>
         </BrowserRouter>

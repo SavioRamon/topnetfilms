@@ -5,7 +5,8 @@ const ROUTES = {
     SEARCH_NAME: "search/name",
     SEARCH_GENRE: "search/genre",
     FILM: "film",
-    GENRE: "genre"
+    GENRE: "genre",
+    PROFILE: "profile"
 };
 
 const PARAMS = {
