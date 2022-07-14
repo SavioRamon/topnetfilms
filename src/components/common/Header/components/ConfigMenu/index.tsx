@@ -1,9 +1,8 @@
 import { Fragment, useState } from "react";
-import { Container, HiddenScreen, UserImage } from "./style";
+import { ButtonConfig, Container, HiddenScreen, UserImage } from "./style";
 
 import images from "../../../../../assets/images";
 import OpenConfig from "./components/OpenConfig";
-import ButtonContent from "./components/ButtonContent";
 import { useAppSelector } from "../../../../../store/hooks";
 
 const ConfigBox = (): JSX.Element => {
@@ -26,12 +25,12 @@ const ConfigBox = (): JSX.Element => {
     
     return (
         <Container>
-            <ButtonContent action={changeConfigDisplay}>
+            <ButtonConfig onClick={changeConfigDisplay}>
                 <UserImage
                     src={returnImage()}
                     alt="your user image" 
                 />
-            </ButtonContent>
+            </ButtonConfig>
             
 
             { openConfig && 

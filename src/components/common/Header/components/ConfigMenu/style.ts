@@ -29,3 +29,9 @@ export const HiddenScreen = styled.div`
     background-color: rgba(0, 0, 0, .7);
 `;
 
+export const ButtonConfig = styled.button`
+    border: none;
+    background-color: transparent;
+    display: flex;
+    box-shadow: none;
+`;
