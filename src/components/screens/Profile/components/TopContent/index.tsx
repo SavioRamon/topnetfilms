@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useAppSelector } from "../../../../store/hooks";
-import UserImage from "./UserImage";
+import { useAppSelector } from "../../../../../store/hooks";
+import UserImage from "./components/UserImage";
 
 const Content = styled.div`
     padding: 1em 1em .3em 1em;
