@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const Profile = () => {
 
-    const { accountInfo, loading, favoriteListIDs, favoriteList } = useAppSelector((state)=>state.user);
+    const { accountInfo, loading, favoriteListIDs } = useAppSelector((state)=>state.user);
     const dispatch = useAppDispatch();
 
     useEffect(()=>{
