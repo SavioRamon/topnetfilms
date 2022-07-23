@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getFavoriteListIDsReq, getFavoriteListReq } from "../../../store/ducks/user";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
@@ -15,6 +16,7 @@ const Profile = () => {
 
     const { accountInfo, loading, favoriteListIDs } = useAppSelector((state)=>state.user);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     useEffect(()=>{
 
@@ -27,6 +29,13 @@ const Profile = () => {
         }
 
     }, [dispatch, accountInfo, favoriteListIDs]);
+
+    useEffect(()=>{
+        if(!loading && !accountInfo) {
+            navigate(`/login`);
+        }
+    }, [loading, navigate, accountInfo]);
+
     return (
         <Container>
             {!loading && accountInfo &&
