@@ -50,5 +50,15 @@ export const tmdb = {
     getGenreList: async () => {
         const results: GenreListTypes | undefined = await basicFetch(`genre/movie/list?`);
         return results;
+    },
+
+    multipleSearch: async (filmListIDs: number[]) => {  
+        const results: Array<FilmTypes | undefined> = [];
+        for(const id of filmListIDs) {
+            const film: FilmTypes | undefined = await basicFetch(`movie/${id}?`);
+            results.push(film);
+        }
+
+        return results;
     }
 };
