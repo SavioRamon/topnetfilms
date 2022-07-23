@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { getFavoriteListReq } from "../../../store/ducks/user";
+import { getFavoriteListIDsReq, getFavoriteListReq } from "../../../store/ducks/user";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import MainContent from "./components/MainContent";
 import TopContent from "./components/TopContent";
@@ -13,13 +13,20 @@ const Container = styled.div`
 
 const Profile = () => {
 
-    const { accountInfo, loading } = useAppSelector((state)=>state.user);
+    const { accountInfo, loading, favoriteListIDs, favoriteList } = useAppSelector((state)=>state.user);
     const dispatch = useAppDispatch();
 
     useEffect(()=>{
-        accountInfo && dispatch(getFavoriteListReq(accountInfo.uid));
-    }, [dispatch, accountInfo]);
-    
+
+        if(accountInfo && favoriteListIDs) {
+            dispatch(getFavoriteListReq(favoriteListIDs));
+        }
+
+        else if(accountInfo && !favoriteListIDs){
+            dispatch(getFavoriteListIDsReq(accountInfo.uid));
+        }
+
+    }, [dispatch, accountInfo, favoriteListIDs]);
     return (
         <Container>
             {!loading && accountInfo &&

@@ -14,11 +14,9 @@ import {
     arrayUnion,
     arrayRemove,
     getDoc,
-    DocumentData
 } from "firebase/firestore";
 
 import { AddOrRemoveFavoriteFilm, FavoriteList } from "../../store/ducks/user";
-import { getFavoriteList } from "../../store/sagas/user";
 
 import firebaseConfig from "./firebaseConfig";
 
@@ -68,25 +66,25 @@ type UserDB = {
 }
 
 export const database = {
-    async getFavoriteList(id: string) {
+    async getFavoriteListIDs(id: string) {
         try {
             const response = await  getDoc(doc(db, "users", id));
             const userDb = response.data() as UserDB | undefined;
             return userDb?.favoriteList;
         } catch {
             return undefined;
-        }  
+        }
     },
 
     async addFavoriteFilm(data: AddOrRemoveFavoriteFilm) {
         await setDoc(doc(db, "users", data.userID), {
-            favoriteList: arrayUnion(data.film)
+            favoriteList: arrayUnion(data.filmID)
         }, { merge: true });
     },
 
     async removeFavoriteFilm(data: AddOrRemoveFavoriteFilm) {
         await setDoc(doc(db, "users", data.userID), {
-            favoriteList: arrayRemove(data.film)
+            favoriteList: arrayRemove(data.filmID)
         }, { merge: true });
     }
 };

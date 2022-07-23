@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { MdOutlineFavoriteBorder, MdOutlineFavorite} from "react-icons/md";
 import { useLayoutEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../../store/hooks";
-import { addFavoriteFilmReq, getFavoriteListReq, removeFavoriteFilmReq } from "../../../../../../store/ducks/user";
+import { addFavoriteFilmReq, getFavoriteListIDsReq, removeFavoriteFilmReq } from "../../../../../../store/ducks/user";
 import { FilmTypes } from "../../../../../../store/ducks/filmList";
 
 
@@ -50,7 +50,7 @@ type Props = {
 const ButtonFavorite = ({ filmID }: Props) => {
     const [isFavorite, setIsFavorite] = useState<boolean | undefined>();
 
-    const { favoriteList, accountInfo, loading } = (useAppSelector((state) => state.user));
+    const { favoriteListIDs, accountInfo, loading } = (useAppSelector((state) => state.user));
     const film = useAppSelector((state) => state.filmList.singleFilm) as FilmTypes;
     const dispatch = useAppDispatch();
 
@@ -58,7 +58,7 @@ const ButtonFavorite = ({ filmID }: Props) => {
     const addFavoriteFilmToDb = (uid: string) => {
         const data = {
             userID: uid,
-            film
+            filmID: film.id
         }
         dispatch(addFavoriteFilmReq(data));
     }
@@ -66,7 +66,7 @@ const ButtonFavorite = ({ filmID }: Props) => {
     const removeFavoriteFilmFromDb = (uid: string) => {
         const data = {
             userID: uid,
-            film
+            filmID: film.id
         }
         dispatch(removeFavoriteFilmReq(data));
     }
@@ -89,21 +89,21 @@ const ButtonFavorite = ({ filmID }: Props) => {
 
 
     useLayoutEffect(()=>{
-        if(!favoriteList && accountInfo) {
-            dispatch(getFavoriteListReq(accountInfo.uid));
+        if(!favoriteListIDs && accountInfo) {
+            dispatch(getFavoriteListIDsReq(accountInfo.uid));
         }
-    }, [favoriteList, dispatch, accountInfo]);
+    }, [favoriteListIDs, dispatch, accountInfo]);
 
     useLayoutEffect(()=>{
-        if(accountInfo && favoriteList) {
-            for(const filmFavorite of favoriteList) {
-                if(filmFavorite.id === filmID) {
+        if(accountInfo && favoriteListIDs) {
+            for(const filmFavorite of favoriteListIDs) {
+                if(filmFavorite === filmID) {
                     setIsFavorite(true);
                     break;
                 }
             }
         }
-    }, [favoriteList]);
+    }, [favoriteListIDs]);
 
     return (
         <>

@@ -13,7 +13,8 @@ import {
     autoLoginReq,
     authWithServiceReq,
     addFavoriteFilmReq,
-    removeFavoriteFilmReq
+    removeFavoriteFilmReq,
+    getFavoriteListIDsReq
 } from "../ducks/user";
 
 import {
@@ -27,6 +28,7 @@ import {
 import {
     addFavoriteFilm,
     getFavoriteList,
+    getFavoriteListIDs,
     removeFavoriteFilm,
     tryAuthWithService,
     tryAutoLogin,
@@ -46,6 +48,7 @@ function* rootSaga() {
         takeLatest(disconnectReq, tryDisconnect),
 
         takeLatest(getFavoriteListReq, getFavoriteList),
+        takeLatest(getFavoriteListIDsReq, getFavoriteListIDs),
         takeLatest(addFavoriteFilmReq, addFavoriteFilm),
         takeLatest(removeFavoriteFilmReq, removeFavoriteFilm)
     ]);
