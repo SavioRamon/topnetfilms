@@ -56,6 +56,7 @@ const OpenConfig = ({changeConfigDisplay}: Props): JSX.Element => {
     };
 
     const navigateToProfileScreen = () => {
+        changeConfigDisplay();
         navigate(CONSTANTS.ROUTES.PROFILE);
     }
 
