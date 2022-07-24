@@ -1,5 +1,5 @@
 
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Content, GlobalStyle, MainContent } from "./app.style";
 import Header from "./components/common/Header";
@@ -9,20 +9,26 @@ import { useAppDispatch } from "./store/hooks";
 
 
 export default function App(){
+  const [load, setLoad] = useState(true);
   const dispatch = useAppDispatch();
 
   useLayoutEffect(()=>{
     dispatch(autoLoginReq());
+    setLoad(false);
   }, [dispatch]);
-  
+
   return (
     <Content>
       <GlobalStyle />
       <Header />
       
       <MainContent>
-        <Outlet />
-        <ScrollUpButton />
+        {!load &&
+          <>
+            <Outlet />
+            <ScrollUpButton />
+          </>
+        }
       </MainContent>
     </Content>
   );
