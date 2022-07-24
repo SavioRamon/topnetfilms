@@ -16,9 +16,16 @@ export const ScrollListContainer = styled.ul`
     overflow: auto;
     position: relative;
     scroll-behavior: smooth;
-    scrollbar-width: none;
+    scrollbar-color: ${({theme})=>theme.gray} transparent;
     ::-webkit-scrollbar {
-        display: none;
+        background-color: inherit;
+        height: .7em;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1em;
+        background: ${({theme})=>theme.gray};
+        cursor: pointer;
     }
 `;
 
@@ -56,4 +63,8 @@ export const ButtonScroll = styled.button`
             }
         `;
     }};
+
+    @media (max-width: 600px) {
+        display: none;
+    }
 `;

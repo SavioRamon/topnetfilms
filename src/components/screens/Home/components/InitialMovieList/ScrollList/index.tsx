@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { 
     ButtonScroll, 
     ScrollContent,
@@ -32,22 +32,29 @@ export default function ScrollList({ listResults }: Props) {
 
         if(divScroll !== null) {
             const newScrollValue = divScroll.scrollLeft + value;
-
-            const maxScrollValueLeft = (divScroll.scrollWidth - divScroll.clientWidth);
-
-            if(newScrollValue <= 0) {
-                setActiveButtons({...activeButtons, leftButton: false});
-            
-            } else if(newScrollValue >= maxScrollValueLeft) {
-                setActiveButtons({...activeButtons, rightButton: false});
-            
-            } else {
-                setActiveButtons({leftButton: true, rightButton: true});
-            }
-
             divScroll.scrollLeft = newScrollValue;
         }
     }
+
+    useEffect(()=>{
+        const scrollableElement = scrollListRef.current;
+        if(scrollableElement) {
+            const maxScrollValueLeft = scrollableElement.scrollWidth - scrollableElement.clientWidth;
+
+            scrollableElement.onscroll = () => {
+                // make buttons visible or not
+                if(scrollableElement.scrollLeft <= 0) {
+                    setActiveButtons({leftButton: false, rightButton: true});
+
+                } else if(scrollableElement.scrollLeft >= maxScrollValueLeft) {
+                    setActiveButtons({leftButton: true, rightButton: false});
+                
+                } else {
+                    setActiveButtons({leftButton: true, rightButton: true});
+                }
+            }
+        }
+    }, [scrollListRef]);
 
     useLayoutEffect(()=>{
         if(scrollListRef.current !== null) {
