@@ -20,7 +20,7 @@ import { useAppSelector } from "../../../../store/hooks";
 export default function Login() {
 
     const navigate = useNavigate();
-    const { accountInfo } = useAppSelector((state)=>state.user);
+    const { accountInfo, loading } = useAppSelector((state)=>state.user);
 
     const navigateToHomeScreen = () => {
         navigate("/", {replace: true})
@@ -34,6 +34,7 @@ export default function Login() {
     
     return (
         <ScreenAuth>
+            {!loading && !accountInfo &&
             <ContentWrapper>
                 <TitleAuth>Login</TitleAuth>
 
@@ -66,6 +67,7 @@ export default function Login() {
                     <BottomContent />
                 </FormAuthentication>
             </ContentWrapper>
+            }
         </ScreenAuth>
     );
 }

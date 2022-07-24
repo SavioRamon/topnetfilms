@@ -20,7 +20,7 @@ import { useAppSelector } from "../../../../store/hooks";
 export default function Register() {
 
     const navigate = useNavigate();
-    const { accountInfo } = useAppSelector((state)=>state.user);
+    const { accountInfo, loading } = useAppSelector((state)=>state.user);
 
     const navigateToHomeScreen = () => {
         navigate("/", {replace: true})
@@ -34,6 +34,7 @@ export default function Register() {
 
     return (
         <ScreenAuth>
+            {!loading && !accountInfo &&
             <ContentWrapper>
                 <TitleAuth>Create Account</TitleAuth>
 
@@ -72,6 +73,7 @@ export default function Register() {
                     <BottomContent />
                 </FormAuthentication>
             </ContentWrapper>
+            }
         </ScreenAuth>
     );
 }
