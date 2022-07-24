@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getFavoriteListIDsReq, getFavoriteListReq } from "../../../store/ducks/user";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import Loading from "../../common/Loading";
 import MainContent from "./components/MainContent";
 import TopContent from "./components/TopContent";
 
@@ -35,9 +36,11 @@ const Profile = () => {
             navigate(`/login`);
         }
     }, [loading, navigate, accountInfo]);
-
     return (
         <Container>
+            {!accountInfo && loading &&
+                <Loading />
+            }
             {!loading && accountInfo &&
                 <>
                     <TopContent />
