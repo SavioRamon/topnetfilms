@@ -16,11 +16,8 @@ const ConfigBox = (): JSX.Element => {
     };
 
     const returnImage = () => {
-        if(!loading && accountInfo?.photoURL) {
-            return accountInfo.photoURL;
-        } else {
-            return  images.userDefault;
-        }
+        if(accountInfo?.photoURL) return accountInfo.photoURL;
+        else if(!loading) return images.userDefault;
     };
     
     return (
